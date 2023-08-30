@@ -33,7 +33,7 @@ namespace HocaInk.InteractiveWall
             if(_fileNames.Count > 0)
             {
                 string pictureName = _fileNames[0];
-                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), ObjectType.Boat);
+                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), GetObjectType(pictureName));
                 _fileNames.Remove(pictureName);
 
             }
@@ -72,6 +72,27 @@ namespace HocaInk.InteractiveWall
         private void OnError(object sender, ErrorEventArgs ea)
         {
             Debug.Log(ea.GetException().Message);
+        }
+
+        private ObjectType GetObjectType(string pictureName)
+        {
+            ObjectType retObjectType = ObjectType.Plane;
+            switch (pictureName.Substring(0, 3))
+            {
+                case "car":
+                    retObjectType = ObjectType.Car;
+                    break;
+                case "bot":
+                    retObjectType = ObjectType.Boat;
+                    break;
+                case "pln":
+                    retObjectType = ObjectType.Plane;
+                    break;
+                case "prs":
+                    retObjectType = ObjectType.Parachute;
+                    break;
+            }
+            return retObjectType;
         }
 
         private void OnDisable()

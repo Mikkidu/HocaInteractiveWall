@@ -6,7 +6,17 @@ namespace HocaInk.InteractiveWall
 {
     public class SpawnManager : MonoBehaviour
     {
-        List<MaterialTemplate> _materials = new List<MaterialTemplate>();
+        [SerializeField] private UnitManager _subMarine;
+        [SerializeField] private UnitManager _planer;
+        [SerializeField] private UnitManager _tank;
+        [SerializeField] private UnitManager _parachute;
+        [SerializeField] private UnitManager _helicopter;
+        [SerializeField] private UnitManager _horse;
+
+        [SerializeField] private Transform _unitsTranform;
+        
+
+        private List<MaterialTemplate> _materials = new List<MaterialTemplate>();
 
         private void Update()
         {
@@ -23,10 +33,30 @@ namespace HocaInk.InteractiveWall
 
         private void SpawnObject(MaterialTemplate materialTemplate)
         {
-            GameObject newObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            newObject.GetComponent<Renderer>().material = materialTemplate.material;
-            newObject.transform.position = transform.position;
+            UnitManager newObject = GetUnitByType(materialTemplate.type);
+            Instantiate(newObject, _unitsTranform).Initialize(materialTemplate.material);
             _materials.Remove(materialTemplate);
+        }
+
+        private UnitManager GetUnitByType(ObjectType objectType)
+        {
+            UnitManager returnUnit = _planer;
+            switch (objectType)
+            {
+                case ObjectType.Car:
+                    returnUnit = _tank;
+                    break;
+                case ObjectType.Boat:
+                    returnUnit = _subMarine;
+                    break;
+                case ObjectType.Plane:
+                    returnUnit = _planer;
+                    break;
+                case ObjectType.Parachute:
+                    returnUnit = _parachute;
+                    break;
+            }
+            return returnUnit;
         }
 
         private struct MaterialTemplate
