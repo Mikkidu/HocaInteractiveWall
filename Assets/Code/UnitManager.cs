@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
     public class UnitManager : MonoBehaviour
     {
-        // Start is called before the first frame update
+        [SerializeField] private TrackType _trackType;
+
         void Start()
         {
-        
+            GetComponent<SplineFollower>().spline = TrackManager.instance.GetTrack(_trackType);
         }
 
         public void Initialize(Material material)

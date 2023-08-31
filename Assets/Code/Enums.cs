@@ -8,4 +8,11 @@ namespace HocaInk.InteractiveWall
         Parachute,
         Building
     }
+
+    public enum TrackType
+    {
+        Air,
+        Ground,
+        Water
+    }
 }

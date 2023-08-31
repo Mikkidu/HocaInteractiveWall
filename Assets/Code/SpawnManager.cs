@@ -14,15 +14,18 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private UnitManager _horse;
 
         [SerializeField] private Transform _unitsTranform;
-        
+
+        [SerializeField] private float _spawnInterval = 1f;
 
         private List<MaterialTemplate> _materials = new List<MaterialTemplate>();
+        private float _spawnTrigger = 0;
 
         private void Update()
         {
-            if (_materials.Count > 0)
+            if (_materials.Count > 0 & Time.time > _spawnTrigger)
             {
                 SpawnObject(_materials[0]);
+                _spawnTrigger = Time.time + _spawnInterval;
             }
         }
 
