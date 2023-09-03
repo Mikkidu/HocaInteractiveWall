@@ -11,7 +11,9 @@ namespace HocaInk.InteractiveWall
 
         void Start()
         {
-            GetComponent<SplineFollower>().spline = TrackManager.instance.GetTrack(_trackType);
+            SplineFollower follower = GetComponent<SplineFollower>();
+            follower.spline = TrackManager.instance.GetTrack(_trackType);
+
         }
 
         public void Initialize(Material material)
