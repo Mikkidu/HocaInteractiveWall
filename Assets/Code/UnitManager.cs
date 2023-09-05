@@ -9,10 +9,13 @@ namespace HocaInk.InteractiveWall
     {
         [SerializeField] private TrackType _trackType;
 
+        private Animator _animator;
+
         void Start()
         {
             SplineFollower follower = GetComponent<SplineFollower>();
             follower.spline = TrackManager.instance.GetTrack(_trackType);
+            _animator = GetComponent<Animator>();
 
         }
 
@@ -25,10 +28,9 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnMouseDown()
         {
-        
+            _animator.SetTrigger("OnClick");
         }
     }
 }
