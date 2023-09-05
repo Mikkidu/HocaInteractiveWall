@@ -1,24 +1,27 @@
-
 using UnityEngine;
 
-public class CloudsSpawner : MonoBehaviour
+
+namespace HocaInk.InteractiveWall
 {
-    [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private CloudController[] _cloudPrefabs;
-    [SerializeField] private float _spawnInterval;
-
-
-    private float _spawnTrigger;
-
-    void Update()
+    public class CloudsSpawner : MonoBehaviour
     {
-        if (Time.time > _spawnTrigger)
+        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private CloudController[] _cloudPrefabs;
+        [SerializeField] private float _spawnInterval;
+
+
+        private float _spawnTrigger;
+
+        void Update()
         {
-            _spawnTrigger = Time.time + _spawnInterval * Random.Range(0.5f, 1.25f);
-            var cloudIndex = Random.Range(0, _cloudPrefabs.Length);
-            var pointIndex = Random.Range(0, _spawnPoints.Length);
-            Instantiate(_cloudPrefabs[cloudIndex], _spawnPoints[pointIndex].position, _spawnPoints[pointIndex].rotation, transform)
-                .Initialize(pointIndex + 1);
+            if (Time.time > _spawnTrigger)
+            {
+                _spawnTrigger = Time.time + _spawnInterval * Random.Range(0.5f, 1.25f);
+                var cloudIndex = Random.Range(0, _cloudPrefabs.Length);
+                var pointIndex = Random.Range(0, _spawnPoints.Length);
+                Instantiate(_cloudPrefabs[cloudIndex], _spawnPoints[pointIndex].position, _spawnPoints[pointIndex].rotation, transform)
+                    .Initialize(pointIndex + 1);
+            }
         }
     }
 }

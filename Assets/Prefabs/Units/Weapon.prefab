@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 6244974574775038424}
   - component: {fileID: 6631737357762818470}
   - component: {fileID: 1139766503637725835}
+  - component: {fileID: 2111049616}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -275,7 +276,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293646625628087135}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 73.26, y: 7.95, z: 14.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -331,14 +332,14 @@ MonoBehaviour:
   _clipFromSample:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 1
@@ -379,28 +380,28 @@ MonoBehaviour:
     applyScaleY: 0
     applyScaleZ: 0
     targetUser: {fileID: 6631737357762818470}
-  targetRigidbody: {fileID: 0}
+  targetRigidbody: {fileID: 2111049616}
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 0}
   _result:
-    position: {x: 0, y: 0, z: 0}
-    up: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    size: 0
-    percent: 0
-  _finalResult:
-    position: {x: 21.84395, y: 11.942276, z: -37.112152}
+    position: {x: 44.528587, y: 5.859012, z: 22.53952}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: -0.75908977, y: -0.036295835, z: 0.6499733}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0
+    percent: 0.20600000023841858
+  _finalResult:
+    position: {x: 44.528587, y: 5.859012, z: 22.53952}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: -0.75908977, y: -0.036295835, z: 0.6499733}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.20600000023841858
   wrapMode: 1
   followMode: 0
   autoStartPosition: 0
   _follow: 1
-  _startPosition: 0
+  _startPosition: 0.20600000023841858
   preserveUniformSpeedWithOffset: 0
   _followSpeed: 10
   _followDuration: 1
@@ -409,9 +410,9 @@ MonoBehaviour:
     useClippedPercent: 0
     keys:
     - _featherStart: 0.33364254236221313
-      _featherEnd: 0.4389550983905792
+      _featherEnd: 0.4559158682823181
       _centerStart: 0.4688630700111389
-      _centerEnd: 0.6950892210006714
+      _centerEnd: 0.8685157895088196
       interpolation:
         serializedVersion: 2
         m_Curve:
@@ -456,8 +457,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5545485, y: 2.5493913, z: 4.940634}
-  m_Center: {x: 0, y: 0.0064008236, z: -0.6212826}
+  m_Size: {x: 2.5677001, y: 1.29, z: 4.864008}
+  m_Center: {x: 3.8668967e-11, y: -0.6, z: 0.0010020734}
+--- !u!54 &2111049616
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293646625628087135}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1958965091827154593
 GameObject:
   m_ObjectHideFlags: 0

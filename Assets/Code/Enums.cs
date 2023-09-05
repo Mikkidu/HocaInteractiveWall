@@ -13,6 +13,7 @@ namespace HocaInk.InteractiveWall
     {
         Air,
         Ground,
-        Water
+        Water,
+        UnderWater
     }
 }

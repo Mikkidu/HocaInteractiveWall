@@ -32,5 +32,10 @@ namespace HocaInk.InteractiveWall
         {
             _animator.SetTrigger("OnClick");
         }
+
+        public void PlaySound()
+        {
+            AudioManager.instance.PlaySound("BOT1");
+        }
     }
 }

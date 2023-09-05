@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3360495571052390078}
-  m_LocalRotation: {x: 0.019910116, y: 0.6994572, z: -0.019501012, w: 0.7141309}
+  m_LocalRotation: {x: 0.019909957, y: 0.69946, z: -0.01950101, w: 0.71412814}
   m_LocalPosition: {x: 21.84395, y: 12.21, z: -37.112152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 3363484778739577210}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 3.194, y: -31.737, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.194, y: 88.811, z: 0}
 --- !u!114 &-70609591312500662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,14 +83,14 @@ MonoBehaviour:
   _clipFromSample:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 1
@@ -137,14 +137,14 @@ MonoBehaviour:
   _result:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _finalResult:
     position: {x: 21.84395, y: 11.942276, z: -37.112152}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99969196, y: -0.013606387, z: 0.02075669}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
@@ -161,9 +161,9 @@ MonoBehaviour:
     useClippedPercent: 0
     keys:
     - _featherStart: 0.33364254236221313
-      _featherEnd: 0.4389550983905792
+      _featherEnd: 0.4539808928966522
       _centerStart: 0.4688630700111389
-      _centerEnd: 0.6950892210006714
+      _centerEnd: 0.8157599568367004
       interpolation:
         serializedVersion: 2
         m_Curve:

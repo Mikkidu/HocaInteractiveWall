@@ -11,6 +11,7 @@ namespace HocaInk.InteractiveWall
 
         [SerializeField] private SplineComputer _airTrack;
         [SerializeField] private SplineComputer _groundTrack;
+        [SerializeField] private SplineComputer _underWaterTrack;
         [SerializeField] private SplineComputer _waterTrack;
 
         private void Awake()
@@ -36,6 +37,9 @@ namespace HocaInk.InteractiveWall
                     break;
                 case TrackType.Water:
                     track = _waterTrack;
+                    break;
+                case TrackType.UnderWater:
+                    track = _underWaterTrack;
                     break;
             }
             return track;
