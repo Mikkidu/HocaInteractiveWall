@@ -37,7 +37,6 @@ public class FileManager : MonoBehaviour
         watcher.IncludeSubdirectories = true;
         watcher.EnableRaisingEvents = true;
         texture = Resources.Load<Texture2D>(path + "/" + "CarTeamplateMapping");
-        ExtractMaterials("Assets/Art/Models/CarModelWheels.fbx", "Assets/Art/Materials");
 
     }
 
@@ -110,31 +109,6 @@ public class FileManager : MonoBehaviour
     }
 
 
-    public static void ExtractMaterials(string assetPath, string destinationPath)
-    {
-        Debug.Log("Extract");
-        HashSet<string> hashSet = new HashSet<string>();
-        IEnumerable<Object> enumerable = from x in AssetDatabase.LoadAllAssetsAtPath(assetPath)
-                                         where x.GetType() == typeof(Material)
-                                         select x;
-        foreach (Object item in enumerable)
-        {
-            Debug.Log(item.name);
-            string path = System.IO.Path.Combine(destinationPath, item.name) + ".mat";
-            path = AssetDatabase.GenerateUniqueAssetPath(path);
-            string value = AssetDatabase.ExtractAsset(item, path);
-            if (string.IsNullOrEmpty(value))
-            {
-                hashSet.Add(assetPath);
-            }
-        }
-
-        foreach (string item2 in hashSet)
-        {
-            Debug.Log(item2);
-            AssetDatabase.WriteImportSettingsIfDirty(item2);
-            AssetDatabase.ImportAsset(item2, ImportAssetOptions.ForceUpdate);
-        }
-    }
+   
 
 }
