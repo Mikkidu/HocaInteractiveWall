@@ -14,16 +14,15 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private SpawnManager _spawnManager;
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
-        private List<Material> _materials = new List<Material>();
-        private string _path = "/Drawings";
+        private string _path = "c:/interactivesoftware/scans";
 
         void Start()
         {
-            if (!Directory.Exists(Application.dataPath + _path))
+            if (!Directory.Exists(_path))
             {
                 try
                 {
-                    Directory.CreateDirectory(Application.dataPath + _path);
+                    Directory.CreateDirectory(_path);
                     Debug.Log("Exist");
                 }
                 catch (System.Exception e)
@@ -31,8 +30,8 @@ namespace HocaInk.InteractiveWall
                     Debug.Log(e.Message);
                 }
             }
-            Debug.Log(Application.dataPath + _path);
-            _watcher = new FileSystemWatcher(Application.dataPath + _path);
+            Debug.Log(_path);
+            _watcher = new FileSystemWatcher(_path);
             _watcher.NotifyFilter = NotifyFilters.DirectoryName |
                                     NotifyFilters.FileName;
             _watcher.Created += OnCreated;
@@ -46,7 +45,7 @@ namespace HocaInk.InteractiveWall
             if(_fileNames.Count > 0)
             {
                 string pictureName = _fileNames[0];
-                _spawnManager.AddMaterial(CreateMaterial(Application.dataPath +  _path + "/" + pictureName), GetObjectType(pictureName));
+                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), GetObjectType(pictureName));
                 _fileNames.Remove(pictureName);
 
             }
