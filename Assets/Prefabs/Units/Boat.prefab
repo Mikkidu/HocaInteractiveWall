@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7709973541037864429}
   - component: {fileID: 8605257931338164274}
   - component: {fileID: 7709973541037864428}
+  - component: {fileID: 8047602458375588271}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7709973541037864431}
-  m_LocalRotation: {x: 0.021962397, y: -0.23589529, z: 0.0053327247, w: 0.97151566}
+  m_LocalRotation: {x: 0.0219619, y: -0.23589608, z: 0.005332623, w: 0.9715155}
   m_LocalPosition: {x: 19.137823, y: 4.3939757, z: 15.992016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 205827097085978581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.59, y: -27.296, z: 0}
 --- !u!114 &8605257931338164274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,7 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1aebf8a8f797f641a1e14e93c2ae554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Test>k__BackingField: 0
   _trackType: 2
+  _soundName: 
+  _followSpeed: 0
+  _hasUV: 0
+  _currentSpeed: 0
 --- !u!114 &7709973541037864428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,15 +86,15 @@ MonoBehaviour:
     keys: []
   _clipFromSample:
     position: {x: -0.49895287, y: 6.6899185, z: -25.861998}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9944929, y: 0.011686292, z: -0.10415062}
+    up: {x: -0.0048943264, y: 0.99785817, z: 0.06523128}
+    forward: {x: 0.99449277, y: 0.01169459, z: -0.104150616}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
     position: {x: -0.49895287, y: 6.6899185, z: -25.861998}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9944929, y: 0.011686292, z: -0.10415062}
+    up: {x: -0.0048949155, y: 0.99785817, z: 0.06523095}
+    forward: {x: 0.99449277, y: 0.01169459, z: -0.104150616}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 1
@@ -133,16 +139,16 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 7709973541037864429}
   _result:
-    position: {x: 19.137823, y: 4.3939757, z: 15.992016}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.45811766, y: -0.045189552, z: 0.88774216}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
     percent: 0.2849999964237213
   _finalResult:
-    position: {x: 19.137823, y: 4.3939757, z: 15.992016}
-    up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.45811766, y: -0.045189552, z: 0.88774216}
+    position: {x: 19.137823, y: 4.0939493, z: 15.992016}
+    up: {x: 0.00014090675, y: 0.9999999, z: 0.00047552818}
+    forward: {x: -0.4579812, y: -0.051393993, z: 0.887475}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.2849999964237213
@@ -164,6 +170,19 @@ MonoBehaviour:
   _unityOnBeginningReached:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &8047602458375588271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709973541037864431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1343422, y: 1.3834854, z: 7.2242393}
+  m_Center: {x: 0.0000028595712, y: 0.19174218, z: 0.3089527}
 --- !u!1001 &383236813680590910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,11 +212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
       propertyPath: m_LocalRotation.w

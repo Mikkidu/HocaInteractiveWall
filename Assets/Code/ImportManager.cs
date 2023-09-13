@@ -18,6 +18,9 @@ namespace HocaInk.InteractiveWall
 
         void Start()
         {
+#if PLATFORM_ANDROID
+            _path = Application.dataPath + "/scans";
+#endif
             if (!Directory.Exists(_path))
             {
                 try
@@ -91,8 +94,8 @@ namespace HocaInk.InteractiveWall
             ObjectType retObjectType = ObjectType.Plane;
             switch (pictureName.Substring(0, 3))
             {
-                case "car":
-                    retObjectType = ObjectType.Car;
+                case "tnk":
+                    retObjectType = ObjectType.Tank;
                     break;
                 case "bot":
                     retObjectType = ObjectType.Boat;
@@ -103,6 +106,16 @@ namespace HocaInk.InteractiveWall
                 case "prs":
                     retObjectType = ObjectType.Parachute;
                     break;
+                case "sub":
+                    retObjectType = ObjectType.SubMarine;
+                    break;
+                case "hel":
+                    retObjectType = ObjectType.Helicopter;
+                    break;
+                case "can":
+                    retObjectType = ObjectType.Cannon;
+                    break;
+
             }
             return retObjectType;
         }

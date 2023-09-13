@@ -38,9 +38,6 @@ namespace HocaInk.InteractiveWall
                 case TrackType.Water:
                     track = _waterTrack;
                     break;
-                case TrackType.UnderWater:
-                    track = _underWaterTrack;
-                    break;
             }
             return track;
         }

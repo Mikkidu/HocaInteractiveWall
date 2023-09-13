@@ -6,12 +6,13 @@ namespace HocaInk.InteractiveWall
 {
     public class SpawnManager : MonoBehaviour
     {
-        [SerializeField] private UnitManager _subMarine;
-        [SerializeField] private UnitManager _planer;
-        [SerializeField] private UnitManager _tank;
-        [SerializeField] private UnitManager _parachute;
-        [SerializeField] private UnitManager _helicopter;
-        [SerializeField] private UnitManager _horse;
+        [SerializeField] private UnitManager _subMarinePrefab;
+        [SerializeField] private UnitManager _planerPrefab;
+        [SerializeField] private UnitManager _tankPrefab;
+        [SerializeField] private UnitManager _cannonPrefab;
+        [SerializeField] private UnitManager _helicoterPrefab;
+        [SerializeField] private UnitManager _boatPrefab;
+
 
         [SerializeField] private Transform _unitsTranform;
 
@@ -43,20 +44,26 @@ namespace HocaInk.InteractiveWall
 
         private UnitManager GetUnitByType(ObjectType objectType)
         {
-            UnitManager returnUnit = _planer;
+            UnitManager returnUnit = _planerPrefab;
             switch (objectType)
             {
-                case ObjectType.Car:
-                    returnUnit = _tank;
+                case ObjectType.Tank:
+                    returnUnit = _tankPrefab;
                     break;
                 case ObjectType.Boat:
-                    returnUnit = _subMarine;
+                    returnUnit = _boatPrefab;
                     break;
                 case ObjectType.Plane:
-                    returnUnit = _planer;
+                    returnUnit = _planerPrefab;
                     break;
-                case ObjectType.Parachute:
-                    returnUnit = _parachute;
+                case ObjectType.Cannon:
+                    returnUnit = _cannonPrefab;
+                    break;
+                case ObjectType.SubMarine:
+                    returnUnit = _subMarinePrefab;
+                    break;
+                case ObjectType.Helicopter:
+                    returnUnit = _helicoterPrefab;
                     break;
             }
             return returnUnit;

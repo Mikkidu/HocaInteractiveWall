@@ -48,7 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1aebf8a8f797f641a1e14e93c2ae554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Test>k__BackingField: 0
   _trackType: 0
+  _soundName: 
+  _followSpeed: 10
+  _hasUV: 1
+  _currentSpeed: 0
 --- !u!114 &8626557553214109826
 MonoBehaviour:
   m_ObjectHideFlags: 0

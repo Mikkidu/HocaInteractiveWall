@@ -2,18 +2,20 @@ namespace HocaInk.InteractiveWall
 {
     public enum ObjectType
     {
-        Car,
+        Tank,
         Plane,
         Boat,
         Parachute,
-        Building
+        Building,
+        Cannon,
+        Helicopter,
+        SubMarine
     }
 
     public enum TrackType
     {
         Air,
         Ground,
-        Water,
-        UnderWater
+        Water
     }
 }
