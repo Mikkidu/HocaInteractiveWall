@@ -12,6 +12,7 @@ namespace HocaInk.InteractiveWall
     {
         [SerializeField] private Shader _shader;
         [SerializeField] private SpawnManager _spawnManager;
+        [SerializeField] private bool _isPlaneTest;
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
         private string _path = "c:/interactivesoftware/scans";
@@ -39,7 +40,7 @@ namespace HocaInk.InteractiveWall
                                     NotifyFilters.FileName;
             _watcher.Created += OnCreated;
             _watcher.Error += OnError;
-            _watcher.Filter = "*.png";
+            _watcher.Filter = "*.jpg";
             _watcher.EnableRaisingEvents = true;
         }
 
@@ -75,6 +76,7 @@ namespace HocaInk.InteractiveWall
             {
                 texture.LoadImage(pictureBytes);
                 newMaterial.mainTexture = texture;
+                File.Delete(pathToImage);
             }
             catch
             {
@@ -92,6 +94,10 @@ namespace HocaInk.InteractiveWall
         private ObjectType GetObjectType(string pictureName)
         {
             ObjectType retObjectType = ObjectType.Plane;
+            if (_isPlaneTest)
+            {
+                return ObjectType.Plane;
+            }
             switch (pictureName.Substring(0, 3))
             {
                 case "tnk":

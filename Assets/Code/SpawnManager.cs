@@ -6,6 +6,7 @@ namespace HocaInk.InteractiveWall
 {
     public class SpawnManager : MonoBehaviour
     {
+        
         [SerializeField] private UnitManager _subMarinePrefab;
         [SerializeField] private UnitManager _planerPrefab;
         [SerializeField] private UnitManager _tankPrefab;
