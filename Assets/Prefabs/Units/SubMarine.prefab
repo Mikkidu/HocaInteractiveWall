@@ -173,7 +173,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!95 &8120192582437869025
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -190,7 +190,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &1510999899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -279,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SUB_UV
       objectReference: {fileID: 0}
+    - target: {fileID: 4327131621256006908, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 75ebb36c2f005c14f8da92d78bfc8091, type: 2}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}

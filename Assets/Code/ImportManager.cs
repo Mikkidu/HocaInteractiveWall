@@ -15,7 +15,7 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private bool _isPlaneTest;
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
-        private string _path = "c:/interactivesoftware/scans";
+        private string _path = "c:/interactivesoftware/converted";
 
         void Start()
         {
