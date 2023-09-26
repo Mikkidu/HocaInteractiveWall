@@ -15,13 +15,10 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private bool _isPlaneTest;
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
-        private string _path = "c:/interactivesoftware/converted";
+        private string _path = "c:/InteractiveSoftware/Converted";
 
         void Start()
         {
-#if PLATFORM_ANDROID
-            _path = Application.dataPath + "/scans";
-#endif
             if (!Directory.Exists(_path))
             {
                 try

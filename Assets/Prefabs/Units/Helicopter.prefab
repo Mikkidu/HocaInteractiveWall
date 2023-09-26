@@ -52,6 +52,7 @@ MonoBehaviour:
   _trackType: 0
   _soundName: 
   _followSpeed: 0
+  _hasUV: 1
   _currentSpeed: 0
 --- !u!114 &4039445677541967933
 MonoBehaviour:
@@ -139,11 +140,11 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 6121502900741589510}
   _result:
-    position: {x: 17.17833, y: 12.7847, z: 29.206385}
-    up: {x: 0.31906626, y: 0.9031411, z: -0.28728542}
-    forward: {x: -0.6923504, y: 0.3055577, z: -0.6536707}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
     percent: 0.46799999475479126
   _finalResult:
     position: {x: 17.17833, y: 12.7847, z: 29.206385}
@@ -185,7 +186,7 @@ BoxCollider:
   m_Center: {x: 0, y: 3, z: 0}
 --- !u!95 &6585100539937292920
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -202,7 +203,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &940954277908854957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,11 +302,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1256515169645396845, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: -1256515169645396845, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: -1256515169645396845, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_LocalRotation.y

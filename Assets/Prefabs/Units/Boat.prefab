@@ -51,7 +51,7 @@ MonoBehaviour:
   _trackType: 2
   _soundName: 
   _followSpeed: 0
-  _hasUV: 0
+  _hasUV: 1
   _currentSpeed: 0
 --- !u!114 &7709973541037864428
 MonoBehaviour:
