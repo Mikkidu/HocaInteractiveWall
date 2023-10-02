@@ -79,9 +79,9 @@ namespace HocaInk.InteractiveWall
             _animator.SetTrigger("OnClick");
         }
 
-        public void PlaySound()
+        public void PlaySound(string soundName)
         {
-            AudioManager.instance.PlaySound("BOT1");
+            AudioManager.instance.PlaySound(soundName);
         }
 
         private Color GetRandomColor()

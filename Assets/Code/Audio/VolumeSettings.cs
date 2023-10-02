@@ -36,8 +36,8 @@ namespace HocaInk.InteractiveWall
             SetSFXVolume(_gameSettings.sfxVolume);
             _audioManager.musicSource.mute = !_gameSettings.isMusicOn;
             _audioManager.sfxSource.mute = !_gameSettings.isSfxOn;*/
-            SetMusicVolume(0.5f);
-            SetSFXVolume(0.5f);
+            //SetMusicVolume(0.5f);
+            //SetSFXVolume(0.5f);
             _audioManager.musicSource.mute = false;
             _audioManager.sfxSource.mute = false;
         }
