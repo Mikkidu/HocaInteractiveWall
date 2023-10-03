@@ -5,52 +5,17 @@ using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
-    public class UnitManager : test
+    public class UnitManager : MonoBehaviour
     {
         [SerializeField] private TrackType _trackType;
         [SerializeField] private string _soundName;
         [SerializeField] private float _followSpeed;
         [SerializeField] private bool _hasUV;
+        //[SerializeField] private float _currentSpeed;
+        [SerializeField] private Renderer[] _vehiclePartsRenderers;
 
-
-        [SerializeField]
-        private float _currentSpeed;
         private SplineFollower _vehicleAhead;
         private Animator _animator;
-
-        public override float Test { 
-            get 
-            { 
-                Debug.Log("Dai");
-                return _currentSpeed;
-            }
-            set
-            {
-                Debug.Log("Hai");
-                if (_vehicleAhead != null && value > _vehicleAhead.followSpeed)
-                {
-                    value = _vehicleAhead.followSpeed;
-                }
-                _currentSpeed = value;
-
-            }
-        }
-
-
-       /* [field: SerializeField]
-        public float Speed
-        {
-            get { return _currentSpeed; }
-            set
-            {
-                if (_vehicleAhead != null && value > _vehicleAhead.followSpeed)
-                {
-                    value = _vehicleAhead.followSpeed;
-                }
-                _currentSpeed = value;
-
-            }
-        }*/
 
         void Start()
         {
@@ -67,8 +32,8 @@ namespace HocaInk.InteractiveWall
             {
                 material.color = GetRandomColor();
             }
-            Renderer[] renderers = GetComponentsInChildren<Renderer>();
-            foreach (Renderer renderer in renderers)
+
+            foreach (Renderer renderer in _vehiclePartsRenderers)
             {
                 renderer.material = material;
             }

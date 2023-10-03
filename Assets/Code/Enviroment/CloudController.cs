@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class CloudController : MonoBehaviour
     {
         [SerializeField] private float _minSpeed = 5f;
@@ -11,8 +13,6 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private float _maxScale;
 
         private float _speed;
-
-    
 
         private void Start()
         {

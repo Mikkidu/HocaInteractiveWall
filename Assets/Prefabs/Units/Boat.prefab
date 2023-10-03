@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532603527836968844}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: 2.3283005e-10, w: 0.70710677}
   m_LocalPosition: {x: 0.04, y: 0.0055, z: -0.0526}
   m_LocalScale: {x: 0.025, y: 0.025000002, z: 0.025000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2049680695046962279}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &7815178530416985778
 ParticleSystem:
@@ -215,6 +215,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 4
       minGradient:
@@ -244,6 +245,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -529,6 +531,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -898,66 +901,8 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 1
-    m_Bursts:
-    - serializedVersion: 2
-      time: 0
-      countCurve:
-        serializedVersion: 2
-        minMaxState: 0
-        scalar: 50
-        minScalar: 50
-        maxCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        minCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      cycleCount: 1
-      repeatInterval: 0.01
-      probability: 1
+    m_BurstCount: 0
+    m_Bursts: []
   SizeModule:
     enabled: 1
     curve:
@@ -1298,6 +1243,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
@@ -1327,6 +1273,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -3493,6 +3440,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -3522,6 +3470,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -3911,6 +3860,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -3953,6 +3903,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -3982,6 +3933,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -4069,6 +4021,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4098,6 +4051,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -4136,6 +4090,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4165,6 +4120,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -4418,6 +4374,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -4447,6 +4404,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -4763,13 +4721,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472746212534947383}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: 2.3283005e-10, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0.0056, z: -0.0952}
   m_LocalScale: {x: 0.025, y: 0.025000002, z: 0.025000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2049680695046962279}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5456458716897674301
 ParticleSystem:
@@ -4953,6 +4911,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 4
       minGradient:
@@ -4982,6 +4941,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -5267,6 +5227,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -6036,6 +5997,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
@@ -6065,6 +6027,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -8231,6 +8194,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -8260,6 +8224,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -8649,6 +8614,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -8691,6 +8657,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -8720,6 +8687,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -8807,6 +8775,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -8836,6 +8805,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -8874,6 +8844,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -8903,6 +8874,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -9156,6 +9128,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -9185,6 +9158,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -9504,6 +9478,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7709973541037864431}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0219619, y: -0.23589608, z: 0.005332623, w: 0.9715155}
   m_LocalPosition: {x: 19.137823, y: 4.3939757, z: 15.992016}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -9511,7 +9486,6 @@ Transform:
   m_Children:
   - {fileID: 205827097085978581}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 2.59, y: -27.296, z: 0}
 --- !u!114 &8605257931338164274
 MonoBehaviour:
@@ -9525,12 +9499,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1aebf8a8f797f641a1e14e93c2ae554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Test>k__BackingField: 0
   _trackType: 2
   _soundName: 
   _followSpeed: 0
   _hasUV: 1
-  _currentSpeed: 0
+  _vehiclePartsRenderers:
+  - {fileID: 4770108779325967542}
+  - {fileID: 7598517175250248344}
+  - {fileID: 2828228249372823794}
+  - {fileID: 2852711939182888355}
 --- !u!114 &7709973541037864428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9553,7 +9530,37 @@ MonoBehaviour:
   _offsetModifier:
     blend: 1
     useClippedPercent: 0
-    keys: []
+    keys:
+    - _featherStart: 0
+      _featherEnd: 1
+      _centerStart: 0.14401409029960632
+      _centerEnd: 0.8999999761581421
+      interpolation:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      blend: 1
+      offset: {x: 0, y: 0.2}
   _colorModifier:
     blend: 1
     useClippedPercent: 0
@@ -9617,24 +9624,24 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 7709973541037864429}
   _result:
-    position: {x: 0, y: 0, z: 0}
-    up: {x: 0, y: 0, z: 0}
-    forward: {x: 0, y: 0, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 0}
-    size: 0
-    percent: 0.2849999964237213
-  _finalResult:
-    position: {x: 19.137823, y: 4.0939493, z: 15.992016}
-    up: {x: 0.00014090675, y: 0.9999999, z: 0.00047552818}
-    forward: {x: -0.4579812, y: -0.051393993, z: 0.887475}
+    position: {x: -28.199432, y: 4.548229, z: 9.075531}
+    up: {x: -0.0056706993, y: 0.9994901, z: 0.031423062}
+    forward: {x: -0.19192581, y: 0.061025716, z: -0.97951025}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.2849999964237213
+    percent: 0.75
+  _finalResult:
+    position: {x: -28.200567, y: 4.7481275, z: 9.081816}
+    up: {x: -0.0056706993, y: 0.9994901, z: 0.031423062}
+    forward: {x: -0.19192581, y: 0.061025716, z: -0.97951025}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    size: 1
+    percent: 0.75
   wrapMode: 1
   followMode: 0
   autoStartPosition: 0
   _follow: 1
-  _startPosition: 0.2849999964237213
+  _startPosition: 0.75
   preserveUniformSpeedWithOffset: 0
   _followSpeed: 8
   _followDuration: 1
@@ -9656,9 +9663,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7709973541037864431}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.1343422, y: 1.3834854, z: 7.2242393}
   m_Center: {x: 0.0000028595712, y: 0.19174218, z: 0.3089527}
 --- !u!95 &311987627562790349
@@ -9724,13 +9739,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8062812041462979182}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: 2.3283005e-10, w: 0.70710677}
   m_LocalPosition: {x: -0.04, y: 0.0055, z: -0.0526}
   m_LocalScale: {x: 0.025, y: 0.025000002, z: 0.025000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2049680695046962279}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1746489830967728572
 ParticleSystem:
@@ -9914,6 +9929,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 4
       minGradient:
@@ -9943,6 +9959,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     startSize:
@@ -10228,6 +10245,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -10597,66 +10615,8 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 1
-    m_Bursts:
-    - serializedVersion: 2
-      time: 0
-      countCurve:
-        serializedVersion: 2
-        minMaxState: 0
-        scalar: 50
-        minScalar: 50
-        maxCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        minCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-      cycleCount: 1
-      repeatInterval: 0.01
-      probability: 1
+    m_BurstCount: 0
+    m_Bursts: []
   SizeModule:
     enabled: 1
     curve:
@@ -10997,6 +10957,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 3
       minGradient:
@@ -11026,6 +10987,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   UVModule:
@@ -13192,6 +13154,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -13221,6 +13184,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
@@ -13610,6 +13574,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -13652,6 +13617,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -13681,6 +13647,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     widthOverTrail:
@@ -13768,6 +13735,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -13797,6 +13765,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
   CustomDataModule:
@@ -13835,6 +13804,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -13864,6 +13834,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel0: Color
@@ -14117,6 +14088,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
@@ -14146,6 +14118,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
+        m_ColorSpace: -1
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     colorLabel1: Color
@@ -14442,6 +14415,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7709973541037864429}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
@@ -14533,6 +14507,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -7412808019601834919, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5925513243868970364}
+    - targetCorrespondingSourceObject: {fileID: -7412808019601834919, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7155499309583274225}
+    - targetCorrespondingSourceObject: {fileID: -7412808019601834919, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2229101898596068256}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
 --- !u!4 &205827097085978581 stripped
 Transform:
@@ -14544,9 +14530,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -7412808019601834919, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
   m_PrefabInstance: {fileID: 383236813680590910}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &2828228249372823794 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2481031777592758476, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+  m_PrefabInstance: {fileID: 383236813680590910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2852711939182888355 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2506070394357400989, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+  m_PrefabInstance: {fileID: 383236813680590910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3091612541920929801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5785407121665415113, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+  m_PrefabInstance: {fileID: 383236813680590910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4770108779325967542 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5144046954450947208, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
   m_PrefabInstance: {fileID: 383236813680590910}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5486926347750352307 stripped
@@ -14557,5 +14558,10 @@ Transform:
 --- !u!4 &6081069689063143388 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5851806989097121762, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+  m_PrefabInstance: {fileID: 383236813680590910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7598517175250248344 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1431338985464651098, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
   m_PrefabInstance: {fileID: 383236813680590910}
   m_PrefabAsset: {fileID: 0}
