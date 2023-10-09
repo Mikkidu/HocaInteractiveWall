@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 
@@ -11,7 +9,6 @@ namespace HocaInk.InteractiveWall
 
         [SerializeField] private SplineComputer _airTrack;
         [SerializeField] private SplineComputer _groundTrack;
-        [SerializeField] private SplineComputer _underWaterTrack;
         [SerializeField] private SplineComputer _waterTrack;
 
         private void Awake()

@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6121502900741589510
 Transform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,6 @@ MonoBehaviour:
   _trackType: 0
   _soundName: 
   _followSpeed: 0
-  _hasUV: 1
   _vehiclePartsRenderers:
   - {fileID: 5622794868773575236}
   - {fileID: 6409919301722132904}
@@ -154,7 +153,7 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     size: 0
-    percent: 0.46799999475479126
+    percent: 0
   _finalResult:
     position: {x: 17.17833, y: 12.7847, z: 29.206385}
     up: {x: 0.31906626, y: 0.9031411, z: -0.28728542}
@@ -290,6 +289,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7812464577505163397, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6955828286038473084, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -5177004244470074973, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3323253078130691662, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3027989830010836731, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1908257152432590670, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -1589276224518006238, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5
@@ -345,6 +368,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_Name
       value: propeller_final
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666091444833056364, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829792610682364649, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341294859576048140, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154654521476270644, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8915872032469681105, guid: 4fc651a7b61d9f94eb74cd696273c650, type: 3}
       propertyPath: m_LocalRotation.w

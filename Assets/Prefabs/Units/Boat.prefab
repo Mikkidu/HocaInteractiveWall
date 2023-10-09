@@ -9470,7 +9470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7709973541037864429
 Transform:
   m_ObjectHideFlags: 0
@@ -9502,7 +9502,6 @@ MonoBehaviour:
   _trackType: 2
   _soundName: 
   _followSpeed: 0
-  _hasUV: 1
   _vehiclePartsRenderers:
   - {fileID: 4770108779325967542}
   - {fileID: 7598517175250248344}
@@ -9624,11 +9623,11 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 7709973541037864429}
   _result:
-    position: {x: -28.199432, y: 4.548229, z: 9.075531}
-    up: {x: -0.0056706993, y: 0.9994901, z: 0.031423062}
-    forward: {x: -0.19192581, y: 0.061025716, z: -0.97951025}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    position: {x: 0, y: 0, z: 0}
+    up: {x: 0, y: 0, z: 0}
+    forward: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    size: 0
     percent: 0.75
   _finalResult:
     position: {x: -28.200567, y: 4.7481275, z: 9.081816}
@@ -14490,9 +14489,25 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1431338985464651098, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
       propertyPath: m_Name
       value: boat_final
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481031777592758476, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506070394357400989, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144046954450947208, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5851806989097121762, guid: 37f5d7fb11579c24da7d821f473ebec2, type: 3}
       propertyPath: m_LocalRotation.w

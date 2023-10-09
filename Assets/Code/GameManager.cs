@@ -4,31 +4,16 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+
 namespace HocaInk.InteractiveWall
 {
+
+
     public class GameManager : MonoBehaviour
     {
         private void Start()
         {
             AudioManager.instance.PlayMusic("BG1");
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                UnityEngine.Debug.Log("TryToKill");
-                try
-                {
-                    Process[] proc = Process.GetProcessesByName("HideConverter");
-                    proc[0].Kill();
-                    UnityEngine.Debug.Log("Succsess!");
-                }
-                catch (System.Exception e)
-                {
-                    UnityEngine.Debug.Log(e.Message +" Cant Kill the procces");
-                }
-            }
         }
 
         private void OnApplicationQuit()

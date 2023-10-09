@@ -4773,7 +4773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4247230066936927989
 Transform:
   m_ObjectHideFlags: 0
@@ -4806,7 +4806,6 @@ MonoBehaviour:
   _trackType: 2
   _soundName: 
   _followSpeed: 0
-  _hasUV: 1
   _vehiclePartsRenderers:
   - {fileID: 4851049322114531687}
 --- !u!114 &4247230066936927988
@@ -5020,6 +5019,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4178965578087843319, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
@@ -5047,7 +5050,7 @@ PrefabInstance:
     - target: {fileID: 4327131621256006908, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 75ebb36c2f005c14f8da92d78bfc8091, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: c6059c27a81afd64ca10caa1e96ee79e, type: 3}
     m_RemovedGameObjects: []

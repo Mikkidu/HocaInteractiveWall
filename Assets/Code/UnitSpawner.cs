@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace HocaInk.InteractiveWall
 {
+
+
     public class UnitSpawner : MonoBehaviour
     {
-        
         [SerializeField] private UnitManager _subMarinePrefab;
         [SerializeField] private UnitManager _planerPrefab;
         [SerializeField] private UnitManager _tankPrefab;
@@ -13,54 +15,77 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private UnitManager _helicoterPrefab;
         [SerializeField] private UnitManager _boatPrefab;
 
+        [SerializeField] private SpawnContainer _spawnContainer;
+
         [SerializeField] private Transform _unitsTranform;
         [SerializeField] private float _spawnInterval = 1f;
 
-        private List<MaterialTemplate> _materials = new List<MaterialTemplate>();
+        private List<MaterialTemplate> _materialsQueue = new List<MaterialTemplate>();
         private float _spawnTrigger = 0;
 
         private void Update()
         {
-            if (_materials.Count > 0 & Time.time > _spawnTrigger)
+            if (_materialsQueue.Count > 0 & Time.time > _spawnTrigger)
             {
-                SpawnObject(_materials[0]);
+                //SpawnObject(_materialsQueue[0]);
+                SpawnBuildObject(_materialsQueue[0]);
                 _spawnTrigger = Time.time + _spawnInterval;
             }
         }
 
-        public void AddMaterial(Material material, ObjectType objectType)
+        public void AddMaterial(Material material, VehicleType objectType)
         {
-            _materials.Add(new MaterialTemplate(material, objectType));
+            _materialsQueue.Add(new MaterialTemplate(material, objectType));
         }
 
         private void SpawnObject(MaterialTemplate materialTemplate)
         {
             UnitManager newObject = GetUnitByType(materialTemplate.type);
-            Instantiate(newObject, _unitsTranform).Initialize(materialTemplate.material);
-            _materials.Remove(materialTemplate);
+            Instantiate(
+                newObject, 
+                Vector3.zero, 
+                Quaternion.identity, 
+                _unitsTranform)
+                .Initialize(materialTemplate.material);
+
+            _materialsQueue.Remove(materialTemplate);
         }
 
-        private UnitManager GetUnitByType(ObjectType objectType)
+        private void SpawnBuildObject(MaterialTemplate materialTemplate)
         {
-            UnitManager returnUnit = _planerPrefab;
+            var vehicle = GetUnitByType(materialTemplate.type)
+                .Initialize(materialTemplate.material);
+            var vehicleCOntainer = new UnitBuilder()
+                .SetContainer(_spawnContainer, _unitsTranform)
+                .SetVehicle(vehicle)
+                .SetTrackType(vehicle.GetTrackType)
+                .SetStartPoint(Random.Range(0, 1f))
+                .Build();
+            Instantiate(vehicleCOntainer);
+            _materialsQueue.Remove(materialTemplate);
+        }
+
+        private UnitManager GetUnitByType(VehicleType objectType)
+        {
+            var returnUnit = _planerPrefab;
             switch (objectType)
             {
-                case ObjectType.Tank:
+                case VehicleType.Tank:
                     returnUnit = _tankPrefab;
                     break;
-                case ObjectType.Boat:
+                case VehicleType.Boat:
                     returnUnit = _boatPrefab;
                     break;
-                case ObjectType.Plane:
+                case VehicleType.Plane:
                     returnUnit = _planerPrefab;
                     break;
-                case ObjectType.Cannon:
+                case VehicleType.Cannon:
                     returnUnit = _cannonPrefab;
                     break;
-                case ObjectType.SubMarine:
+                case VehicleType.SubMarine:
                     returnUnit = _subMarinePrefab;
                     break;
-                case ObjectType.Helicopter:
+                case VehicleType.Helicopter:
                     returnUnit = _helicoterPrefab;
                     break;
             }
@@ -70,9 +95,9 @@ namespace HocaInk.InteractiveWall
         private struct MaterialTemplate
         {
             public Material material;
-            public ObjectType type;
+            public VehicleType type;
 
-            public MaterialTemplate(Material newMaterial, ObjectType objectType)
+            public MaterialTemplate(Material newMaterial, VehicleType objectType)
             {
                 material = newMaterial;
                 type = objectType;

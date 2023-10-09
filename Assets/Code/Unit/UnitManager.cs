@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 
@@ -10,33 +8,30 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private TrackType _trackType;
         [SerializeField] private string _soundName;
         [SerializeField] private float _followSpeed;
-        [SerializeField] private bool _hasUV;
-        //[SerializeField] private float _currentSpeed;
         [SerializeField] private Renderer[] _vehiclePartsRenderers;
 
         private SplineFollower _vehicleAhead;
         private Animator _animator;
 
-        void Start()
+        public TrackType GetTrackType
         {
+            get { return _trackType; }
+        }
 
+        private void Start()
+        {
             SplineFollower follower = GetComponent<SplineFollower>();
             follower.spline = TrackManager.instance.GetTrack(_trackType);
             _animator = GetComponent<Animator>();
-            
         }
 
-        public void Initialize(Material material)
+        public UnitManager Initialize(Material material)
         {
-            if (!_hasUV)
-            {
-                material.color = GetRandomColor();
-            }
-
             foreach (Renderer renderer in _vehiclePartsRenderers)
             {
                 renderer.material = material;
             }
+            return this;
         }
 
         private void OnMouseDown()
@@ -49,32 +44,17 @@ namespace HocaInk.InteractiveWall
             AudioManager.instance.PlaySound(soundName);
         }
 
-        private Color GetRandomColor()
+        public void SetDistance(float distance)
         {
-            switch(Random.Range(0, 5))
-            {
-                case 0:
-                    return Color.red;
-                case 1:
-                    return Color.green;
-                case 2:
-                    return Color.blue;
-                case 3:
-                    return Color.yellow;
-                case 4:
-                    return Color.magenta;
-                default:
-                    return Color.white;
-            }
+            Debug.Log(distance);
+            GetComponent<SplineFollower>().SetDistance(distance);
         }
-
         private void OnTriggerEnter(Collider other)
         {
             if (_vehicleAhead != null)
             {
                 return;
             }
-
              _vehicleAhead = other.GetComponent<SplineFollower>();
         }
         private void OnTriggerExit(Collider other)

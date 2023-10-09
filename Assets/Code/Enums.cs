@@ -1,12 +1,10 @@
 namespace HocaInk.InteractiveWall
 {
-    public enum ObjectType
+    public enum VehicleType
     {
         Tank,
         Plane,
         Boat,
-        Parachute,
-        Building,
         Cannon,
         Helicopter,
         SubMarine

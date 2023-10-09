@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     [RequireComponent(typeof(Dreamteck.Splines.SplineFollower))]
     public class WheelController : MonoBehaviour
     {
@@ -10,7 +12,6 @@ namespace HocaInk.InteractiveWall
 
         private Dreamteck.Splines.SplineFollower _follower;
         private float _deltaAngle = 0;
-        private Quaternion _wheelRotation;
 
         private void Start()
         {

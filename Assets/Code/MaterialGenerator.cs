@@ -11,7 +11,6 @@ namespace HocaInk.InteractiveWall
     {
         [SerializeField] private Shader _shader;
         [SerializeField] private UnitSpawner _spawnManager;
-        [SerializeField] private bool _isPlaneTest;
 
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
@@ -31,7 +30,6 @@ namespace HocaInk.InteractiveWall
                     Debug.Log(e.Message);
                 }
             }
-            Debug.Log(_path);
             _watcher = new FileSystemWatcher(_path);
             _watcher.NotifyFilter = NotifyFilters.DirectoryName |
                                     NotifyFilters.FileName;
@@ -46,7 +44,7 @@ namespace HocaInk.InteractiveWall
             if(_fileNames.Count > 0)
             {
                 string pictureName = _fileNames[0];
-                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), GetObjectType(pictureName));
+                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), GetVehicleType(pictureName));
                 _fileNames.Remove(pictureName);
 
             }
@@ -67,8 +65,8 @@ namespace HocaInk.InteractiveWall
         private Material CreateMaterial(string pathToImage)
         {
             byte[] pictureBytes = File.ReadAllBytes(pathToImage);
-            Texture2D texture = new Texture2D(2048, 2048);
-            Material newMaterial = new Material(_shader);
+            var texture = new Texture2D(2048, 2048);
+            var newMaterial = new Material(_shader);
             try
             {
                 texture.LoadImage(pictureBytes);
@@ -82,45 +80,38 @@ namespace HocaInk.InteractiveWall
             return newMaterial;
         }
 
-
         private void OnError(object sender, ErrorEventArgs ea)
         {
             Debug.Log(ea.GetException().Message);
         }
 
-        private ObjectType GetObjectType(string pictureName)
+        private VehicleType GetVehicleType(string pictureName)
         {
-            ObjectType retObjectType = ObjectType.Plane;
-            if (_isPlaneTest)
-            {
-                return ObjectType.Plane;
-            }
+            var retVehicleType = VehicleType.Plane;
+
             switch (pictureName.Substring(0, 3))
             {
                 case "tnk":
-                    retObjectType = ObjectType.Tank;
+                    retVehicleType = VehicleType.Tank;
                     break;
                 case "bot":
-                    retObjectType = ObjectType.Boat;
+                    retVehicleType = VehicleType.Boat;
                     break;
                 case "pln":
-                    retObjectType = ObjectType.Plane;
-                    break;
-                case "prs":
-                    retObjectType = ObjectType.Parachute;
+                    retVehicleType = VehicleType.Plane;
                     break;
                 case "sub":
-                    retObjectType = ObjectType.SubMarine;
+                    retVehicleType = VehicleType.SubMarine;
                     break;
                 case "hel":
-                    retObjectType = ObjectType.Helicopter;
+                    retVehicleType = VehicleType.Helicopter;
                     break;
                 case "can":
-                    retObjectType = ObjectType.Cannon;
+                    retVehicleType = VehicleType.Cannon;
                     break;
 
             }
-            return retObjectType;
+            return retVehicleType;
         }
 
         private void OnDisable()

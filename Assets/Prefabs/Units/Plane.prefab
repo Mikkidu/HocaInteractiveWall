@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8621719810841630587
 Transform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,6 @@ MonoBehaviour:
   _trackType: 0
   _soundName: 
   _followSpeed: 10
-  _hasUV: 1
   _vehiclePartsRenderers:
   - {fileID: 3333022941987977341}
 --- !u!114 &8626557553214109826
@@ -269,6 +268,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -6224370469608031518, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -412,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_Name
       value: PlanerAnim 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927101854519832446, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5782197922836866647, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalScale.y

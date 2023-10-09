@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1387918184970006899
 Transform:
   m_ObjectHideFlags: 0
@@ -54,7 +54,6 @@ MonoBehaviour:
   _trackType: 1
   _soundName: 
   _followSpeed: 0
-  _hasUV: 1
   _vehiclePartsRenderers:
   - {fileID: 8111025264616960306}
   - {fileID: 3003216461417130517}
@@ -5461,13 +5460,53 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6168800509537456245, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -5536274057877482620, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -4954765719459858962, guid: effaee6ede33c54419168db2475fd42e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3295343785406989113, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3253362339112049655, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -2125955503371224438, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -85744201872177665, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 111698161076234222, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 826729105753876448, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: effaee6ede33c54419168db2475fd42e, type: 3}
       propertyPath: m_Name
       value: weapon_final
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360331128365129101, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231157601842104396, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2337114481902276276, guid: effaee6ede33c54419168db2475fd42e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5480,6 +5519,10 @@ PrefabInstance:
     - target: {fileID: 4190714653517397863, guid: effaee6ede33c54419168db2475fd42e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344194988769879312, guid: effaee6ede33c54419168db2475fd42e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
