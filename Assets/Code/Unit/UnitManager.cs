@@ -13,6 +13,8 @@ namespace HocaInk.InteractiveWall
         private SplineFollower _vehicleAhead;
         private Animator _animator;
 
+        public float distance;
+
         public TrackType GetTrackType
         {
             get { return _trackType; }
@@ -22,6 +24,7 @@ namespace HocaInk.InteractiveWall
         {
             SplineFollower follower = GetComponent<SplineFollower>();
             follower.spline = TrackManager.instance.GetTrack(_trackType);
+            follower.SetDistance(distance);
             _animator = GetComponent<Animator>();
         }
 

@@ -16,6 +16,7 @@ namespace HocaInk.InteractiveWall
         {
             Debug.developerConsoleVisible = true;
             transform.SetParent(_parent);
+            _splineFollower.SetDistance(_startDistance);
             /*var follower = GetComponent<SplineFollower>();
             _startDistance = follower.spline.CalculateLength() * _startPoint;
             Debug.Log("Distance " + _startDistance +
@@ -73,7 +74,8 @@ namespace HocaInk.InteractiveWall
             }
             _unit.transform.SetParent(transform);
             _unit.GetComponent<SplineFollower>().spline = _splineFollower.spline;
-            _unit.SetDistance(_startDistance);
+            //_unit.SetDistance(_startDistance);
+            _unit.distance = _startDistance;
         }
 
         public void AppearObject()

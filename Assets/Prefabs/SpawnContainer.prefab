@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121497144857349937}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.008060602, y: 0.7599991, z: 0.009427508, w: 0.6498058}
-  m_LocalPosition: {x: -7.902419, y: 11.170987, z: -40.66135}
+  m_LocalRotation: {x: 0.04874188, y: 0.46652877, z: -0.025758771, w: 0.8827863}
+  m_LocalPosition: {x: 40.394573, y: 10.060704, z: -35.404514}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,19 +142,19 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 2446847395076754030}
   _result:
-    position: {x: -7.902419, y: 11.170987, z: -40.66135}
+    position: {x: 40.394573, y: 10.060704, z: -35.404514}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9875517, y: 0.024805447, z: -0.15532713}
+    forward: {x: 0.8211794, y: -0.110091746, z: 0.55995023}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.8999603718480003
+    percent: 0.05606996647197868
   _finalResult:
-    position: {x: -7.902419, y: 11.170987, z: -40.66135}
+    position: {x: 40.394573, y: 10.060704, z: -35.404514}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.9875517, y: 0.024805447, z: -0.15532713}
+    forward: {x: 0.8211794, y: -0.110091746, z: 0.55995023}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.8999603718480003
+    percent: 0.05606996647197868
   wrapMode: 0
   followMode: 0
   autoStartPosition: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
-  _startPoint: 0.9027481
-  _startDistance: 280.5469
+  _startPoint: 0.061478257
+  _startDistance: 19.105589
   _parent: {fileID: 0}
   _splineFollower: {fileID: 2821726582858275280}
   _trackType: 1
