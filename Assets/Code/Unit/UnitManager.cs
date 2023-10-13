@@ -39,7 +39,8 @@ namespace HocaInk.InteractiveWall
 
         private void OnMouseDown()
         {
-            _animator.SetTrigger("OnClick");
+            int actionIndex = Random.Range(1, 3);
+            _animator.SetTrigger("Action" + actionIndex);
         }
 
         public void PlaySound(string soundName)

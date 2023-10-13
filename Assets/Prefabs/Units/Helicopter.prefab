@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 6696744897651656991}
   - {fileID: 3022246187259350721}
   - {fileID: 6370140752726225561}
+  distance: 0
 --- !u!114 &4039445677541967933
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4808,6 +4808,7 @@ MonoBehaviour:
   _followSpeed: 0
   _vehiclePartsRenderers:
   - {fileID: 4851049322114531687}
+  distance: 0
 --- !u!114 &4247230066936927988
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9507,6 +9507,7 @@ MonoBehaviour:
   - {fileID: 7598517175250248344}
   - {fileID: 2828228249372823794}
   - {fileID: 2852711939182888355}
+  distance: 0
 --- !u!114 &7709973541037864428
 MonoBehaviour:
   m_ObjectHideFlags: 0

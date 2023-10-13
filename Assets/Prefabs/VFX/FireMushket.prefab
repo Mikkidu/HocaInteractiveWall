@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6402766441932562595
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3741542438490651364}
   - {fileID: 257194336099098848}
@@ -3693,7 +3693,7 @@ ParticleSystem:
   LightsModule:
     enabled: 0
     ratio: 0
-    light: {fileID: 0}
+    light: {fileID: 4532432150453455368}
     randomDistribution: 1
     color: 1
     range: 1
@@ -10672,10 +10672,10 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.4433962, g: 0.1580962, b: 0.11503205, a: 0}
-        key1: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 1}
-        key2: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 1}
+        key1: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 0.5882353}
+        key2: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 0.5882353}
         key3: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 0}
-        key4: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 0.039215688}
+        key4: {r: 0.19600001, g: 0.19600001, b: 0.19600001, a: 0}
         key5: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.039215688}
         key6: {r: 1, g: 1, b: 1, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
@@ -10696,7 +10696,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 4
       minGradient:
@@ -14122,7 +14122,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.32040966, b: 0, a: 1}
-  m_Intensity: 2.6270115
+  m_Intensity: 1
   m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14167,7 +14167,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.9e-44, z: 1.8759e-41, w: -3.9594874e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
