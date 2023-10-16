@@ -41,7 +41,7 @@ namespace HocaInk.InteractiveWall
 
         public SpawnContainer SetTrackType(TrackType trackType)
         {
-            Debug.Log(trackType);
+            //Debug.Log(trackType);
             _trackType = trackType;
             GetComponent<SplineFollower>().spline = TrackManager.instance.GetTrack(trackType);
             if (GetComponent<SplineFollower>().spline == null)
@@ -54,9 +54,9 @@ namespace HocaInk.InteractiveWall
             _startPoint = startPoint;
             _splineFollower = GetComponent<SplineFollower>();
             _startDistance = _splineFollower.spline.CalculateLength() * _startPoint;
-            Debug.LogError("Distance " + _startDistance +
+            /*Debug.LogError("Distance " + _startDistance +
                         "Length " + _splineFollower.spline.CalculateLength() +
-                        "Point " + _startPoint);
+                        "Point " + _startPoint);*/
             _splineFollower.SetDistance(_startDistance);
             return this;
         }

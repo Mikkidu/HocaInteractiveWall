@@ -32,7 +32,7 @@ namespace HocaInk.InteractiveWall
 
         public UnitBuilder SetStartPoint(float startPoint)
         {
-            Debug.Log("StartPoint " + startPoint);
+            //Debug.Log("StartPoint " + startPoint);
             if (startPoint >= 0 || startPoint <= 1)
                 _startPoint = startPoint;
             return this;

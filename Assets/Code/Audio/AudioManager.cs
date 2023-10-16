@@ -38,5 +38,12 @@ namespace HocaInk.InteractiveWall
             Sound sound = Array.Find(sounds, sounds => sounds.Name == soundName);
             sfxSource.PlayOneShot(sound.clip, sound.volume);
         }
+
+        public void PlayRandomSound(string nameStatrts)
+        {
+            Sound[] soundsArray = Array.FindAll(sounds, sounds => sounds.Name.StartsWith(nameStatrts));
+            int randomIndex = UnityEngine.Random.Range(0, soundsArray.Length);
+            sfxSource.PlayOneShot(soundsArray[randomIndex].clip, soundsArray[randomIndex].volume);
+        }
     }
 }

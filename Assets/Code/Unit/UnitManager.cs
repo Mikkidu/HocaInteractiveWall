@@ -3,6 +3,7 @@ using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
+    [RequireComponent(typeof(Animator))]
     public class UnitManager : MonoBehaviour
     {
         [SerializeField] private TrackType _trackType;
@@ -11,7 +12,7 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private Renderer[] _vehiclePartsRenderers;
 
         private SplineFollower _vehicleAhead;
-        private Animator _animator;
+        //private Animator _animator;
 
         public float distance;
 
@@ -25,7 +26,7 @@ namespace HocaInk.InteractiveWall
             SplineFollower follower = GetComponent<SplineFollower>();
             follower.spline = TrackManager.instance.GetTrack(_trackType);
             follower.SetDistance(distance);
-            _animator = GetComponent<Animator>();
+            //_animator = GetComponent<Animator>();
         }
 
         public UnitManager Initialize(Material material)
@@ -37,7 +38,7 @@ namespace HocaInk.InteractiveWall
             return this;
         }
 
-        private void OnMouseDown()
+        /*private void OnMouseDown()
         {
             int actionIndex = Random.Range(1, 3);
             _animator.SetTrigger("Action" + actionIndex);
@@ -46,7 +47,7 @@ namespace HocaInk.InteractiveWall
         public void PlaySound(string soundName)
         {
             AudioManager.instance.PlaySound(soundName);
-        }
+        }*/
 
         public void SetDistance(float distance)
         {

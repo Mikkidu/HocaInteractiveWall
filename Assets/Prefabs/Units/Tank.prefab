@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1388691488}
   - component: {fileID: 1900174349}
   - component: {fileID: 1900174353}
+  - component: {fileID: 4107953400326031590}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -336,6 +337,19 @@ MonoBehaviour:
   - {fileID: 3365135467203915982}
   - {fileID: 3363349791361706808}
   - {fileID: 3365015556721765344}
+--- !u!114 &4107953400326031590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360495571052390078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8663b630d2fed224f86bf4a796c97be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionCount: 2
 --- !u!1001 &1131460439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,6 +508,10 @@ PrefabInstance:
     - target: {fileID: 673538019623066033, guid: 31ae65c18a1cb104c9708e37cb265478, type: 3}
       propertyPath: m_Name
       value: CFXR Fire Breath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1847051954426302115, guid: 31ae65c18a1cb104c9708e37cb265478, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6402766441932562595, guid: 31ae65c18a1cb104c9708e37cb265478, type: 3}
       propertyPath: m_LocalPosition.x

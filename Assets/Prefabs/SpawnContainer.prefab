@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3844498037934307525}
   - component: {fileID: 2821726582858275280}
   - component: {fileID: 1771322407459875289}
+  - component: {fileID: 3939557700629812484}
   m_Layer: 0
   m_Name: SpawnContainer
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121497144857349937}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.009529759, y: 0.69477165, z: -0.009207245, w: 0.71910834}
-  m_LocalPosition: {x: -36.95823, y: 7.2082314, z: -14.505477}
+  m_LocalRotation: {x: 0.0012652897, y: 0.9986426, z: 0.029402975, w: -0.042974297}
+  m_LocalPosition: {x: -55.819168, y: 7.828366, z: -3.0191963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,19 +143,19 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 2446847395076754030}
   _result:
-    position: {x: -36.95823, y: 7.2082314, z: -14.505477}
+    position: {x: -55.819168, y: 7.828366, z: -3.0191963}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99905664, y: -0.026499724, z: 0.034403075}
+    forward: {x: -0.08575752, y: 0.058834873, z: -0.9945773}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.7686633513629965
+    percent: 0.6495251666879792
   _finalResult:
-    position: {x: -36.95823, y: 7.2082314, z: -14.505477}
+    position: {x: -55.819168, y: 7.828366, z: -3.0191963}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: 0.99905664, y: -0.026499724, z: 0.034403075}
+    forward: {x: -0.08575752, y: 0.058834873, z: -0.9945773}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.7686633513629965
+    percent: 0.6495251666879792
   wrapMode: 0
   followMode: 0
   autoStartPosition: 0
@@ -186,11 +187,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
-  _startPoint: 0.76864004
-  _startDistance: 238.87016
+  _startPoint: 0.67839575
+  _startDistance: 210.82495
   _parent: {fileID: 0}
   _splineFollower: {fileID: 2821726582858275280}
   _trackType: 1
+--- !u!114 &3939557700629812484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121497144857349937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8663b630d2fed224f86bf4a796c97be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionCount: 0
 --- !u!1001 &912300343676403306
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: 2.3283005e-10, w: 0.70710677}
   m_LocalPosition: {x: 0.04, y: 0.0055, z: -0.0526}
   m_LocalScale: {x: 0.025, y: 0.025000002, z: 0.025000002}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2049680695046962279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9464,6 +9464,7 @@ GameObject:
   - component: {fileID: 8047602458375588271}
   - component: {fileID: 311987627562790349}
   - component: {fileID: 2547192168105614005}
+  - component: {fileID: -5591165398815320731}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -9714,6 +9715,19 @@ MonoBehaviour:
   - {fileID: 6081069689063143388}
   - {fileID: 3091612541920929801}
   - {fileID: 5486926347750352307}
+--- !u!114 &-5591165398815320731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709973541037864431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8663b630d2fed224f86bf4a796c97be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionCount: 2
 --- !u!1 &8062812041462979182
 GameObject:
   m_ObjectHideFlags: 0
@@ -9743,7 +9757,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: -0.000000014901159, z: 2.3283005e-10, w: 0.70710677}
   m_LocalPosition: {x: -0.04, y: 0.0055, z: -0.0526}
   m_LocalScale: {x: 0.025, y: 0.025000002, z: 0.025000002}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2049680695046962279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
