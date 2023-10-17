@@ -3,6 +3,8 @@ using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class SpawnContainer : MonoBehaviour
     {
         [SerializeField] private UnitManager _unit;
@@ -14,15 +16,10 @@ namespace HocaInk.InteractiveWall
 
         private void Start()
         {
-            Debug.developerConsoleVisible = true;
+            //Debug.developerConsoleVisible = true;
             transform.SetParent(_parent);
+            _startDistance = _splineFollower.spline.CalculateLength() * _startPoint;
             _splineFollower.SetDistance(_startDistance);
-            /*var follower = GetComponent<SplineFollower>();
-            _startDistance = follower.spline.CalculateLength() * _startPoint;
-            Debug.Log("Distance " + _startDistance +
-                        "Length " + follower.spline.CalculateLength()+
-                        "Point " + _startPoint);
-            follower.SetDistance(_startDistance);*/
             SpawnVehicle();
         }
 
@@ -35,16 +32,15 @@ namespace HocaInk.InteractiveWall
         public SpawnContainer SetVehicle(UnitManager unit)
         {
             _unit = unit;
-            //_unit.transform.parent = transform;
             return this;
         }
 
         public SpawnContainer SetTrackType(TrackType trackType)
         {
-            //Debug.Log(trackType);
             _trackType = trackType;
-            GetComponent<SplineFollower>().spline = TrackManager.instance.GetTrack(trackType);
-            if (GetComponent<SplineFollower>().spline == null)
+            _splineFollower = GetComponent<SplineFollower>();
+            _splineFollower.spline = TrackManager.instance.GetTrack(trackType);
+            if (_splineFollower.spline == null)
                 Debug.Log("Spline is null");
             return this;
         }
@@ -52,12 +48,6 @@ namespace HocaInk.InteractiveWall
         public SpawnContainer SetStartPoint(float startPoint)
         {
             _startPoint = startPoint;
-            _splineFollower = GetComponent<SplineFollower>();
-            _startDistance = _splineFollower.spline.CalculateLength() * _startPoint;
-            /*Debug.LogError("Distance " + _startDistance +
-                        "Length " + _splineFollower.spline.CalculateLength() +
-                        "Point " + _startPoint);*/
-            _splineFollower.SetDistance(_startDistance);
             return this;
         }
 
@@ -74,7 +64,6 @@ namespace HocaInk.InteractiveWall
             }
             _unit.transform.SetParent(transform);
             _unit.GetComponent<SplineFollower>().spline = _splineFollower.spline;
-            //_unit.SetDistance(_startDistance);
             _unit.distance = _startDistance;
         }
 
@@ -84,10 +73,11 @@ namespace HocaInk.InteractiveWall
             _unit.transform.SetParent(transform.parent);
         }
 
-        public void DestroyObject()//, float delay = 0)
+        public void DestroyObject()
         {
-            Destroy(gameObject);//, delay);
+            Destroy(gameObject);
         }
-
     }
+
+
 }

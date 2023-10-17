@@ -1,9 +1,10 @@
-﻿using UnityEngine.Audio;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace HocaInk.InteractiveWall
 {
+
+
     [System.Serializable]
     public class Sound
     {
@@ -14,4 +15,6 @@ namespace HocaInk.InteractiveWall
         public float volume;
 
     }
+
+
 }

@@ -1,19 +1,24 @@
 using UnityEngine;
 
+
 namespace HocaInk.InteractiveWall
 {
+
+
     public class EffectsController : MonoBehaviour
     {
         [SerializeField] private GameObject _spawnObject;
-        public void DestroyObject()//, float delay = 0)
+
+        public void DestroyObject()
         {
-            Destroy(gameObject);//, delay);
+            Destroy(gameObject);
         }
 
         public void AppearObject()
         {
             _spawnObject.SetActive(true);
         }
-
     }
+
+
 }

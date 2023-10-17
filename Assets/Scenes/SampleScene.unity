@@ -634,6 +634,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1574644680}
     m_Modifications:
+    - target: {fileID: 396939318233809519, guid: f6d5937ceb16b74448db885c4f987c41, type: 3}
+      propertyPath: _hasSounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 396939318233809519, guid: f6d5937ceb16b74448db885c4f987c41, type: 3}
+      propertyPath: _soundName
+      value: BTF
+      objectReference: {fileID: 0}
+    - target: {fileID: 396939318233809519, guid: f6d5937ceb16b74448db885c4f987c41, type: 3}
+      propertyPath: _actionCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1178117626924056989, guid: f6d5937ceb16b74448db885c4f987c41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.5412078
@@ -1336,6 +1348,14 @@ PrefabInstance:
     - target: {fileID: 2942974914766910138, guid: 8154b13638ef82148950b71dc638c68c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180.14902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069533544522670426, guid: 8154b13638ef82148950b71dc638c68c, type: 3}
+      propertyPath: _hasSounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069533544522670426, guid: 8154b13638ef82148950b71dc638c68c, type: 3}
+      propertyPath: _soundName
+      value: PIG
       objectReference: {fileID: 0}
     - target: {fileID: 4339480293852746966, guid: 8154b13638ef82148950b71dc638c68c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3060,6 +3080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: PIG
 --- !u!65 &729027653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3120,6 +3142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: SNL
 --- !u!1001 &754424291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5765,6 +5789,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 166.9425
       objectReference: {fileID: 0}
+    - target: {fileID: 1260617499638829461, guid: da490e8b28cb8244f9f9e66c7c1b714a, type: 3}
+      propertyPath: _hasSounds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260617499638829461, guid: da490e8b28cb8244f9f9e66c7c1b714a, type: 3}
+      propertyPath: _soundName
+      value: BTF
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260617499638829461, guid: da490e8b28cb8244f9f9e66c7c1b714a, type: 3}
+      propertyPath: _actionCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1749427841081919867, guid: da490e8b28cb8244f9f9e66c7c1b714a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -1.2617956
@@ -6307,6 +6343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: SNL
 --- !u!65 &1082478395
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7334,6 +7372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ff9456d5bc15a4dbb4badf957de06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animalSoundsPack: {fileID: 11400000, guid: 1031b176444034e4f9524d6b3e437791, type: 2}
   musicSource: {fileID: 1370578159}
   sfxSource: {fileID: 1370578162}
   sounds:
@@ -7407,6 +7446,7 @@ MonoBehaviour:
   - Name: BG1
     clip: {fileID: 8300000, guid: 6f3df2cd397b74f4a8eb689bd5460492, type: 3}
     volume: 1
+  animalSounds: []
 --- !u!4 &1370578161
 Transform:
   m_ObjectHideFlags: 0
@@ -9267,6 +9307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: PIG
 --- !u!65 &1588340298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9538,6 +9580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: RCC
 --- !u!1001 &1594312246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10055,6 +10099,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: PRN
 --- !u!1 &1647709006
 GameObject:
   m_ObjectHideFlags: 0
@@ -10787,6 +10833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: RCC
 --- !u!4 &1848277176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4871644173759748, guid: 9c899610785b0c344a60a99f81a7b599, type: 3}
@@ -11000,6 +11048,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: BTF
 --- !u!4 &1963877471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4017359017749981955, guid: fb539cc724255d2498155cd1c8c64d87, type: 3}
@@ -13675,6 +13725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: BTF
 --- !u!1001 &2042911372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14165,6 +14217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 1
+  _soundName: PRN
 --- !u!4 &2135922462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 310591538635744230, guid: 78d859b598b916d4289a8b833958ad3b, type: 3}

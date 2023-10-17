@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121497144857349937}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0012652897, y: 0.9986426, z: 0.029402975, w: -0.042974297}
-  m_LocalPosition: {x: -55.819168, y: 7.828366, z: -3.0191963}
+  m_LocalRotation: {x: 0.0076209437, y: 0.94757766, z: 0.022664044, w: -0.31862965}
+  m_LocalPosition: {x: -51.6227, y: 7.021241, z: 8.192885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,24 +143,24 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 2446847395076754030}
   _result:
-    position: {x: -55.819168, y: 7.828366, z: -3.0191963}
+    position: {x: -51.6227, y: 7.021241, z: 8.192885}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.08575752, y: 0.058834873, z: -0.9945773}
+    forward: {x: -0.6035072, y: 0.0478084, z: -0.79592305}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.6495251666879792
+    percent: 0.6078662928925832
   _finalResult:
-    position: {x: -55.819168, y: 7.828366, z: -3.0191963}
+    position: {x: -51.6227, y: 7.021241, z: 8.192885}
     up: {x: 0, y: 1, z: 0}
-    forward: {x: -0.08575752, y: 0.058834873, z: -0.9945773}
+    forward: {x: -0.6035072, y: 0.0478084, z: -0.79592305}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.6495251666879792
+    percent: 0.6078662928925832
   wrapMode: 0
   followMode: 0
   autoStartPosition: 0
   _follow: 1
-  _startPosition: 0.75
+  _startPosition: 0.33000001311302185
   preserveUniformSpeedWithOffset: 0
   _followSpeed: 0
   _followDuration: 1
@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
-  _startPoint: 0.67839575
-  _startDistance: 210.82495
+  _startPoint: 0.45917636
+  _startDistance: 143.42644
   _parent: {fileID: 0}
   _splineFollower: {fileID: 2821726582858275280}
   _trackType: 1
@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 0
+  _hasSounds: 0
+  _soundName: 
 --- !u!1001 &912300343676403306
 PrefabInstance:
   m_ObjectHideFlags: 0

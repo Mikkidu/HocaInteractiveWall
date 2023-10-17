@@ -1,18 +1,26 @@
 using UnityEngine;
 
+
 namespace HocaInk.InteractiveWall
 {
+
+
     public class AnimationController : MonoBehaviour
     {
+        [Range(1,10)]
+        [SerializeField] private byte _actionCount;
+        [SerializeField] private bool _hasSounds;
+        [SerializeField] private string _soundName;
+
         private Animator _animator;
         private byte _lastActionNumber = 0;
         private bool _isSecondSameAction;
-        [Range(0,10)]
-        [SerializeField] private byte _actionCount;
-
+        private AudioManager _audioManager;
+        
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            _audioManager = AudioManager.instance;
         }
 
         private void OnMouseDown()
@@ -22,14 +30,14 @@ namespace HocaInk.InteractiveWall
                 _animator.SetTrigger("Action0");
                 return;
             }
-            byte actionIndex = (byte)Random.Range(0, _actionCount);
+
+            var actionIndex = (byte)Random.Range(0, _actionCount);
             if (actionIndex == _lastActionNumber)
             {
                 if (_isSecondSameAction)
                 {
                     actionIndex = (byte)((actionIndex + 1) % _actionCount);
-                    _isSecondSameAction = false;
-                    _lastActionNumber = actionIndex;
+                    SetNewAction(actionIndex);
                 }
                 else
                 {
@@ -38,20 +46,32 @@ namespace HocaInk.InteractiveWall
             }
             else
             {
-                _isSecondSameAction = false;
-                _lastActionNumber = actionIndex;
+                SetNewAction(actionIndex);
             }
             _animator.SetTrigger("Action" + actionIndex);
+
+            if (_hasSounds)
+            {
+                _audioManager.PlayRandomAnimalSound(_soundName);
+            }
+        }
+
+        private void SetNewAction(byte actionIndex)
+        {
+            _isSecondSameAction = false;
+            _lastActionNumber = actionIndex;
         }
 
         public void PlaySound(string soundName)
         {
-            AudioManager.instance.PlaySound(soundName);
+            _audioManager.PlaySound(soundName);
         }
 
         public void PlayRandomSound(string nameStarts)
         {
-            AudioManager.instance.PlayRandomSound(nameStarts);
+            _audioManager.PlayRandomSound(nameStarts);
         }
     }
+
+
 }

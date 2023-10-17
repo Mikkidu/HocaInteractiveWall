@@ -1,14 +1,13 @@
 using UnityEngine;
-using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class UnitBuilder 
     {
-
         private SpawnContainer _container;
         private UnitManager _vehicle;
-        private TrackType _trackType;
         private float _startPoint = 0;
 
         public UnitBuilder SetContainer(SpawnContainer containerPrefab, Transform parent)
@@ -24,15 +23,8 @@ namespace HocaInk.InteractiveWall
             return this;
         }
 
-        public UnitBuilder SetTrackType(TrackType track)
-        {
-            _trackType = track;
-            return this;
-        }
-
         public UnitBuilder SetStartPoint(float startPoint)
         {
-            //Debug.Log("StartPoint " + startPoint);
             if (startPoint >= 0 || startPoint <= 1)
                 _startPoint = startPoint;
             return this;
@@ -58,4 +50,6 @@ namespace HocaInk.InteractiveWall
             return this;
         }
     }
+
+
 }

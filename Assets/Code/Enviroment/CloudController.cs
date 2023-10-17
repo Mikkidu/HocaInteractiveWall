@@ -47,4 +47,6 @@ namespace HocaInk.InteractiveWall
             Destroy(gameObject);
         }
     }
+
+
 }

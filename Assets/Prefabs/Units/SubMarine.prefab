@@ -14550,6 +14550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 0
+  _soundName: 
 --- !u!1 &5822815831108446273
 GameObject:
   m_ObjectHideFlags: 0

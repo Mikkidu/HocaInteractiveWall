@@ -3,16 +3,21 @@ using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     [RequireComponent(typeof(Animator))]
     public class UnitManager : MonoBehaviour
     {
         [SerializeField] private TrackType _trackType;
         [SerializeField] private string _soundName;
-        [SerializeField] private float _followSpeed;
         [SerializeField] private Renderer[] _vehiclePartsRenderers;
 
-        private SplineFollower _vehicleAhead;
-        //private Animator _animator;
+        #region Add Distance control
+
+        //[SerializeField] private float _followSpeed;
+        //private SplineFollower _vehicleAhead;
+
+        #endregion
 
         public float distance;
 
@@ -23,10 +28,9 @@ namespace HocaInk.InteractiveWall
 
         private void Start()
         {
-            SplineFollower follower = GetComponent<SplineFollower>();
+            var follower = GetComponent<SplineFollower>();
             follower.spline = TrackManager.instance.GetTrack(_trackType);
             follower.SetDistance(distance);
-            //_animator = GetComponent<Animator>();
         }
 
         public UnitManager Initialize(Material material)
@@ -38,23 +42,15 @@ namespace HocaInk.InteractiveWall
             return this;
         }
 
-        /*private void OnMouseDown()
-        {
-            int actionIndex = Random.Range(1, 3);
-            _animator.SetTrigger("Action" + actionIndex);
-        }
-
-        public void PlaySound(string soundName)
-        {
-            AudioManager.instance.PlaySound(soundName);
-        }*/
-
         public void SetDistance(float distance)
         {
             Debug.Log(distance);
             GetComponent<SplineFollower>().SetDistance(distance);
         }
-        private void OnTriggerEnter(Collider other)
+
+        #region Add Distance Control
+
+        /*private void OnTriggerEnter(Collider other)
         {
             if (_vehicleAhead != null)
             {
@@ -62,6 +58,7 @@ namespace HocaInk.InteractiveWall
             }
              _vehicleAhead = other.GetComponent<SplineFollower>();
         }
+
         private void OnTriggerExit(Collider other)
         {
             if (_vehicleAhead == null)
@@ -76,6 +73,11 @@ namespace HocaInk.InteractiveWall
                     _vehicleAhead = null;
                 }
             }
-        }
+        }*/
+
+        #endregion
+
     }
+
+
 }

@@ -1,21 +1,22 @@
 using UnityEngine;
+using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
 
 
-    [RequireComponent(typeof(Dreamteck.Splines.SplineFollower))]
+    [RequireComponent(typeof(SplineFollower))]
     public class WheelController : MonoBehaviour
     {
         [SerializeField] private float _speedModifier = 1;
         [SerializeField] private Transform[] _wheels;
 
-        private Dreamteck.Splines.SplineFollower _follower;
+        private SplineFollower _follower;
         private float _deltaAngle = 0;
 
         private void Start()
         {
-            _follower = GetComponent<Dreamteck.Splines.SplineFollower>();
+            _follower = GetComponent<SplineFollower>();
         }
 
         void Update()
@@ -30,4 +31,6 @@ namespace HocaInk.InteractiveWall
             }
         }
     }
+
+
 }

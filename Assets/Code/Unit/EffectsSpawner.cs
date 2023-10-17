@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class EffectsSpawner : MonoBehaviour
     {
         [SerializeField] private ParticleSystem[] _effects;
@@ -51,4 +53,6 @@ namespace HocaInk.InteractiveWall
             public int lastIndex;
         }
     }
+
+
 }

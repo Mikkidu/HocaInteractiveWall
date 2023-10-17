@@ -9728,6 +9728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 0
+  _soundName: 
 --- !u!1 &8062812041462979182
 GameObject:
   m_ObjectHideFlags: 0

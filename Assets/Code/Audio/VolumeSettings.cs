@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class VolumeSettings : MonoBehaviour
     {
         [SerializeField] private AudioMixer _mixer;
@@ -13,8 +15,8 @@ namespace HocaInk.InteractiveWall
         const string MIXER_MUSIC = "MusicVolume";
         const string MIXER_SFX = "SFXVolume";
 
-        private static float _musicVolume = 0.5f;
-        private static float _sfxVolume = 0.5f;
+        //private static float _musicVolume = 0.5f;
+        //private static float _sfxVolume = 0.5f;
 
         public static bool isMusicOn = true;
         public static bool isSfxOn = true;
@@ -65,4 +67,6 @@ namespace HocaInk.InteractiveWall
             //_gameSettings.isSfxOn = isOn;
         }
     }
+
+
 }

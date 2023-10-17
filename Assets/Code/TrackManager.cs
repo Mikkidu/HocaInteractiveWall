@@ -3,6 +3,8 @@ using Dreamteck.Splines;
 
 namespace HocaInk.InteractiveWall
 {
+
+
     public class TrackManager : MonoBehaviour
     {
         public static TrackManager instance;
@@ -39,4 +41,6 @@ namespace HocaInk.InteractiveWall
             return track;
         }
     }
+
+
 }

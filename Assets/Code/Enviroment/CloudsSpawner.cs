@@ -20,7 +20,8 @@ namespace HocaInk.InteractiveWall
                 _spawnTrigger = Time.time + _spawnInterval * Random.Range(0.5f, 1.25f);
                 var cloudIndex = Random.Range(0, _cloudPrefabs.Length);
                 var pointIndex = Random.Range(0, _spawnPoints.Length);
-                Instantiate(_cloudPrefabs[cloudIndex], 
+                Instantiate(
+                    _cloudPrefabs[cloudIndex], 
                     _spawnPoints[pointIndex].position, 
                     _spawnPoints[pointIndex].rotation, 
                     transform)
@@ -28,4 +29,6 @@ namespace HocaInk.InteractiveWall
             }
         }
     }
+
+
 }

@@ -23,11 +23,11 @@ namespace HocaInk.InteractiveWall
                 try
                 {
                     Directory.CreateDirectory(_path);
-                    Debug.Log("Exist");
+                    Debug.Log("Directory Created");
                 }
                 catch (System.Exception e)
                 {
-                    Debug.Log(e.Message);
+                    Debug.Log("Filed oto create directory " + e.Message);
                 }
             }
             _watcher = new FileSystemWatcher(_path);
@@ -120,4 +120,6 @@ namespace HocaInk.InteractiveWall
             _watcher.Error -= OnError;
         }
     }
+
+
 }

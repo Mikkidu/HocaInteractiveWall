@@ -17,7 +17,7 @@ namespace HocaInk.InteractiveWall
 
         [SerializeField] private SpawnContainer _spawnContainer;
 
-        [SerializeField] private Transform _unitsTranform;
+        [SerializeField] private Transform _unitsParent;
         [SerializeField] private float _spawnInterval = 1f;
 
         private List<MaterialTemplate> _materialsQueue = new List<MaterialTemplate>();
@@ -27,7 +27,6 @@ namespace HocaInk.InteractiveWall
         {
             if (_materialsQueue.Count > 0 & Time.time > _spawnTrigger)
             {
-                //SpawnObject(_materialsQueue[0]);
                 SpawnBuildObject(_materialsQueue[0]);
                 _spawnTrigger = Time.time + _spawnInterval;
             }
@@ -38,30 +37,16 @@ namespace HocaInk.InteractiveWall
             _materialsQueue.Add(new MaterialTemplate(material, objectType));
         }
 
-        private void SpawnObject(MaterialTemplate materialTemplate)
-        {
-            UnitManager newObject = GetUnitByType(materialTemplate.type);
-            Instantiate(
-                newObject, 
-                Vector3.zero, 
-                Quaternion.identity, 
-                _unitsTranform)
-                .Initialize(materialTemplate.material);
-
-            _materialsQueue.Remove(materialTemplate);
-        }
-
         private void SpawnBuildObject(MaterialTemplate materialTemplate)
         {
             var vehicle = GetUnitByType(materialTemplate.type)
                 .Initialize(materialTemplate.material);
-            var vehicleCOntainer = new UnitBuilder()
-                .SetContainer(_spawnContainer, _unitsTranform)
+            var vehicleContainer = new UnitBuilder()
+                .SetContainer(_spawnContainer, _unitsParent)
                 .SetVehicle(vehicle)
-                .SetTrackType(vehicle.GetTrackType)
                 .SetStartPoint(Random.Range(0, 1f))
                 .Build();
-            Instantiate(vehicleCOntainer);
+            Instantiate(vehicleContainer);
             _materialsQueue.Remove(materialTemplate);
         }
 
@@ -104,4 +89,6 @@ namespace HocaInk.InteractiveWall
             }
         }
     }
+
+
 }

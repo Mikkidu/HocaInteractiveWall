@@ -1,5 +1,7 @@
 namespace HocaInk.InteractiveWall
 {
+
+
     public enum VehicleType
     {
         Tank,
@@ -16,4 +18,6 @@ namespace HocaInk.InteractiveWall
         Ground,
         Water
     }
+
+
 }

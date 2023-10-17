@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionCount: 2
+  _hasSounds: 0
+  _soundName: 
 --- !u!1001 &133625294274634462
 PrefabInstance:
   m_ObjectHideFlags: 0
