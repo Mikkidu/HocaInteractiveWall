@@ -54,7 +54,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trackType: 1
   _soundName: 
-  _followSpeed: 0
   _vehiclePartsRenderers:
   - {fileID: 3384156708464739070}
   - {fileID: 3382740633166207688}

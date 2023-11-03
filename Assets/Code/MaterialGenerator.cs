@@ -10,6 +10,7 @@ namespace HocaInk.InteractiveWall
     public class MaterialGenerator : MonoBehaviour
     {
         [SerializeField] private Shader _shader;
+        [SerializeField] private Material _material;
         [SerializeField] private UnitSpawner _spawnManager;
 
         private FileSystemWatcher _watcher;
@@ -66,7 +67,8 @@ namespace HocaInk.InteractiveWall
         {
             byte[] pictureBytes = File.ReadAllBytes(pathToImage);
             var texture = new Texture2D(2048, 2048);
-            var newMaterial = new Material(_shader);
+            //var newMaterial = new Material(_shader);
+            var newMaterial = new Material(_material);
             try
             {
                 texture.LoadImage(pictureBytes);
