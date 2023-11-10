@@ -12,13 +12,20 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private Shader _shader;
         [SerializeField] private Material _material;
         [SerializeField] private UnitSpawner _spawnManager;
+        
+        public Texture2D _textureTest;
 
         private FileSystemWatcher _watcher;
         private List<string> _fileNames = new List<string>();
-        private string _path = "c:/InteractiveSoftware/Converted";
+        private ImageConverter _converter;
+        private string _path = "c:/InteractiveSoftware/Scans";
+        private bool _isREadyForImport = true;
+
 
         void Start()
         {
+            _converter = new ImageConverter(this);
+            _converter.StartConversion();
             if (!Directory.Exists(_path))
             {
                 try
@@ -42,14 +49,16 @@ namespace HocaInk.InteractiveWall
 
         void Update()
         {
-            if(_fileNames.Count > 0)
+            
+            if(_fileNames.Count > 0 & _isREadyForImport)
             {
                 string pictureName = _fileNames[0];
-                _spawnManager.AddMaterial(CreateMaterial(_path + "/" + pictureName), GetVehicleType(pictureName));
+                _isREadyForImport = false;
+                _converter.GenerateTexture(_path + "/" + pictureName);
                 _fileNames.Remove(pictureName);
-
             }
         }
+
 
         private void OnCreated(object sender, FileSystemEventArgs ea)
         {
@@ -63,23 +72,16 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        private Material CreateMaterial(string pathToImage)
+        public void CreateMaterial(Texture2D texture)
         {
-            byte[] pictureBytes = File.ReadAllBytes(pathToImage);
-            var texture = new Texture2D(2048, 2048);
-            //var newMaterial = new Material(_shader);
+            var t1 = System.Environment.TickCount;
+            if (texture == null) return;
             var newMaterial = new Material(_material);
-            try
-            {
-                texture.LoadImage(pictureBytes);
-                newMaterial.mainTexture = texture;
-                File.Delete(pathToImage);
-            }
-            catch
-            {
-                Debug.Log("error");
-            }
-            return newMaterial;
+            newMaterial.mainTexture = texture;
+            newMaterial.name = texture.name;
+            _spawnManager.AddMaterial(newMaterial, GetVehicleType(texture.name));
+            _isREadyForImport = true;
+            Debug.Log($"{texture.name}.material. Delta counts {System.Environment.TickCount - t1}");
         }
 
         private void OnError(object sender, ErrorEventArgs ea)

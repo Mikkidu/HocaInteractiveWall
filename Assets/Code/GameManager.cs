@@ -11,6 +11,8 @@ namespace HocaInk.InteractiveWall
 
     public class GameManager : MonoBehaviour
     {
+        public static string _curDir;
+
         private void Start()
         {
             AudioManager.instance.PlayMusic("BG1");
@@ -18,6 +20,7 @@ namespace HocaInk.InteractiveWall
 
         private void OnApplicationQuit()
         {
+            System.Environment.CurrentDirectory = _curDir;
             UnityEngine.Debug.Log("TryToKill");
             try
             {

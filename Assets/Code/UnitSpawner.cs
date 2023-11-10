@@ -39,6 +39,7 @@ namespace HocaInk.InteractiveWall
 
         private void SpawnBuildObject(MaterialTemplate materialTemplate)
         {
+            var t1 = System.Environment.TickCount;
             var vehicle = GetUnitByType(materialTemplate.type)
                 .Initialize(materialTemplate.material);
             var vehicleContainer = new UnitBuilder()
@@ -48,6 +49,7 @@ namespace HocaInk.InteractiveWall
                 .Build();
             Instantiate(vehicleContainer);
             _materialsQueue.Remove(materialTemplate);
+            Debug.Log($"SpawnBUildObject {materialTemplate.material.name}: {t1 - System.Environment.TickCount} ms");
         }
 
         private UnitManager GetUnitByType(VehicleType objectType)

@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
-  _startPoint: 0.2787997
+  _startPoint: 0.8744073
   _startDistance: 143.42644
   _parent: {fileID: 0}
   _splineFollower: {fileID: 2821726582858275280}
