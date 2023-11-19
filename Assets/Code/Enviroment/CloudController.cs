@@ -34,7 +34,8 @@ namespace HocaInk.InteractiveWall
 
         public void Initialize(float maxScale)
         {
-            _maxScale = maxScale;
+            if (maxScale > _maxScale)
+                _maxScale = maxScale;
         }
 
         private void Move()

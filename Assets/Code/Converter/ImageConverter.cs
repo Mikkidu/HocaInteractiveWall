@@ -5,10 +5,10 @@ using System.IO;
 using System;
 using QRCodeDecoderLibrary;
 using UnityEngine;
+using UniRx;
 using Debug = UnityEngine.Debug;
 using Graphics = System.Drawing.Graphics;
 
-using UniRx;
 
 namespace HocaInk.InteractiveWall
 {
@@ -77,7 +77,7 @@ namespace HocaInk.InteractiveWall
                         File.Delete(imagePath);
                         image = RawTransform(image);
                         image = TransformImage(image);
-                        var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
+                        /*var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
                         int x, y;
                         for (x = 0; x < newBitmap.Width; x++)
                         {
@@ -85,12 +85,19 @@ namespace HocaInk.InteractiveWall
                             {
                                 System.Drawing.Color pixelColor = image.GetPixel(x, y);
                                 System.Drawing.Color newColor = System.Drawing.Color.FromArgb(pixelColor.G, pixelColor.R, 0, pixelColor.B);
-                                newBitmap.SetPixel(x, y, newColor);
+                                //newBitmap.SetPixel(x, y, newColor);
+                                int offset = 15;
+                                if (x >= offset)
+                                    newBitmap.SetPixel(x - offset, y, newColor);
+                                else
+                                {
+                                    newBitmap.SetPixel(_curretnImageWigth - 1 - (offset - x), y, newColor);
+                                }
                             }
                         }
-                        newBitmap.Save("c:/InteractiveSoftware/Converted/" + _vehicleName + ".jpg", ImageFormat.Jpeg);
-                        var imageByte = ImageToByteArray(newBitmap);;
-                        return imageByte;
+                        //newBitmap.Save("c:/InteractiveSoftware/Converted/" + _vehicleName + ".jpg", ImageFormat.Jpeg);
+                        var imageByte = ImageToByteArray(newBitmap);;*/
+                        return PrepareToEncode(image);
                     }
                     catch (Exception ex)
                     {
@@ -104,10 +111,11 @@ namespace HocaInk.InteractiveWall
                     {
                         if (normImage[0] != null)
                         {
-                            var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
+                            Texture2D texture = GetTextureFromByte(normImage[0]);
+                            /*var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
                             texture.LoadRawTextureData(normImage[0]);
                             texture.Apply();
-                            texture.name = _vehicleName;
+                            texture.name = _vehicleName;*/
                             _materialGenerator.CreateMaterial(texture);
                         }
                         else
@@ -122,6 +130,7 @@ namespace HocaInk.InteractiveWall
             }
             return;
         }
+
 
         
 
@@ -150,9 +159,8 @@ namespace HocaInk.InteractiveWall
                 }
             }
             if (currentImage == null)
-            {
                 return null;
-            }
+
             _curretnImageWigth = currentImage.Width;
             _curretnImageHeight = currentImage.Height;
             return currentImage;
@@ -169,53 +177,53 @@ namespace HocaInk.InteractiveWall
             return bitmap;
         }
 
-        private static Bitmap ChangeAlingment(ref Bitmap bitmap, RotateFlipType rotateType)
+        private static Bitmap TransformImage(Bitmap image)
         {
-            if (rotateType != RotateFlipType.RotateNoneFlipNone)
-            {
-                bitmap.RotateFlip(rotateType);
-                if (rotateType != RotateFlipType.Rotate180FlipNone)
-                {
-                    _curretnImageWigth = bitmap.Width;
-                    _curretnImageHeight = bitmap.Height;
-                }
-                TransformFinders(rotateType);
-            }
-            return bitmap;
+            if (_finders == null || _finders.Length < 7)
+                return null;
+            //foreach (var finder in finders)
+            //{
+            //    Debug.Log(finder.ToString());
+            //}
+            var markPositions = GetMarks(_finders);
+            var rotateAngle = -GetRotationAngle(markPositions);
+            var currentCenter = GetCurrentCenter(markPositions);
+            image = RotateImage(image, rotateAngle, currentCenter);
+            image = ResizeImage(image, markPositions);
+            Graphics.FromImage(image).FillRectangle(Brushes.Brown, new Rectangle(0, 0, _curretnImageWigth / 5, _curretnImageWigth / 5));
+            return image;
         }
 
-        private static void TransformFinders(RotateFlipType rotateType)
+        private static byte[] PrepareToEncode(Bitmap image)
         {
-            var borderPoint = new Point(_curretnImageWigth, _curretnImageHeight);
-            byte flipX = 0, flipY = 0;
-            if  (rotateType == RotateFlipType.Rotate180FlipNone || rotateType == RotateFlipType.Rotate90FlipNone)
+            var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
+            int x, y;
+            for (x = 0; x < newBitmap.Width; x++)
             {
-                flipX = 1;
-            }
-            if (rotateType == RotateFlipType.Rotate180FlipNone || rotateType == RotateFlipType.Rotate270FlipNone)
-            {
-                flipY = 1;
-            }
-            foreach (var finder in _finders)
-            {
-                Debug.Log($"Position before {finder.Position}");
-                Point point = new Point();
-                if (rotateType == RotateFlipType.Rotate180FlipNone)
+                for (y = 0; y < newBitmap.Height; y++)
                 {
-                    point = finder.Position;
+                    System.Drawing.Color pixelColor = image.GetPixel(x, y);
+                    System.Drawing.Color newColor = System.Drawing.Color.FromArgb(pixelColor.G, pixelColor.R, 0, pixelColor.B);
+                    int offset = 15;
+                    if (x >= offset)
+                        newBitmap.SetPixel(x - offset, y, newColor);
+                    else
+                    {
+                        newBitmap.SetPixel(_curretnImageWigth - 1 - (offset - x), y, newColor);
+                    }
                 }
-                else
-                {
-                    point.X = finder.Position.Y;
-                    point.Y = finder.Position.X;
-                }
-                point.X = borderPoint.X * flipX + point.X * (1 - 2 * flipX);
-                point.Y = borderPoint.Y * flipY + point.Y * (1 - 2 * flipY);
-                Debug.Log($"{borderPoint.X} * {flipX} + {point.X} * {(1 - 2 * flipX)}");
-                Debug.Log($"{borderPoint.Y} * {flipY} + {point.Y} * {(1 - 2 * flipY)}");
-                finder.Position = point;
-                Debug.Log($"Position rotated {finder.Position}");
             }
+            //newBitmap.Save("c:/InteractiveSoftware/Converted/" + _vehicleName + ".jpg", ImageFormat.Jpeg);
+            return ImageToByteArray(newBitmap);
+        }
+
+        private static Texture2D GetTextureFromByte(byte[] byteImage)
+        {
+            var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
+            texture.LoadRawTextureData(byteImage);
+            texture.Apply();
+            texture.name = _vehicleName;
+            return texture;
         }
 
         private static RotateFlipType GetRotateType(Point topLeftMarkPosition)
@@ -232,108 +240,19 @@ namespace HocaInk.InteractiveWall
                 return RotateFlipType.Rotate180FlipNone;
         }
 
-        private static Bitmap TransformImage(Bitmap image)
+        private static Bitmap ChangeAlingment(ref Bitmap bitmap, RotateFlipType rotateType)
         {
-            if (_finders == null || _finders.Length < 7)
-                return null;
-            //foreach (var finder in finders)
-            //{
-            //    Debug.Log(finder.ToString());
-            //}
-            var markPositions = GetMarks(_finders);
-            var rotateAngle = GetRotateAngle(markPositions);
-            var currentCenter = GetCurrentCenter(markPositions);
-            image = RotateImage(image, -rotateAngle, currentCenter);
-            image = ResizeImage(image, markPositions);
-            Graphics.FromImage(image).FillRectangle(Brushes.Brown, new Rectangle(0, 0, _curretnImageWigth / 5, _curretnImageWigth / 5));
-            return image;
-        }
-
-        private static int Round(float number)
-        {
-            return (int)Math.Round(number);
-        }
-
-        private static float GetRotateAngle(Point[] markPoints)
-        {
-            var anglesSum = 0f;
-            for (int i = 0; i < markPoints.Length; i++)
+            if (rotateType != RotateFlipType.RotateNoneFlipNone)
             {
-                int nextPointIndex = i < markPoints.Length - 1 ? i + 1 : 0;
-                anglesSum += GetAngle(markPoints[i], markPoints[nextPointIndex]);
+                bitmap.RotateFlip(rotateType);
+                if (rotateType != RotateFlipType.Rotate180FlipNone)
+                {
+                    _curretnImageWigth = bitmap.Width;
+                    _curretnImageHeight = bitmap.Height;
+                }
+                TransformFinders(rotateType);
             }
-            var averageAngle = anglesSum / markPoints.Length;
-            return averageAngle;
-        }
-
-        private static float GetAngle(Point point1, Point point2)
-        {
-            float dx = point1.X - point2.X;
-            float dy = point1.Y - point2.Y;
-            var rezAngle = 0f;
-            if (Math.Abs(dx) > Math.Abs(dy))
-            {
-                rezAngle = (float)Math.Atan(dy / dx);
-            }
-            else
-            {
-                rezAngle = (float)Math.Atan(-dx / dy);
-            }
-            //Debug.Log($"dx_{dx}, dy_{dy}, angle_{rezAngle}");
-            return rezAngle * 180 / (float)Math.PI;
-        }
-
-        private static Bitmap RotateImage(Bitmap bmp, float angle, Point center)
-        {
-            var rotatedImage = new Bitmap(bmp.Width, bmp.Height);
-            rotatedImage.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
-
-            using (var g = Graphics.FromImage(rotatedImage))
-            {
-                g.TranslateTransform(center.X, center.Y);
-                g.RotateTransform(angle);
-                g.TranslateTransform(-center.X, -center.Y);
-                g.DrawImage(bmp, new Point(0, 0));
-            }
-
-            return rotatedImage;
-        }
-
-        private static Bitmap ResizeImage(Bitmap source, Point[] markPoints)
-        {
-            _distanceBetweenMarksX = (int)Math.Round(1848f / 2048f * source.Width);
-            _distanceBetweenMarksY = (int)Math.Round(1248f / 1448f * source.Height);
-            var averageDistances = new float[2];
-            for (int i = 0; i < averageDistances.Length * 2; i++)
-            {
-                int iNext = i < 3 ? i + 1 : 0;
-                averageDistances[i % 2] += (float)Math.Sqrt(
-                    Math.Pow(markPoints[i].X - markPoints[iNext].X, 2) +
-                    Math.Pow(markPoints[i].Y - markPoints[iNext].Y, 2));
-            }
-            for (int i = 0; i < averageDistances.Length; i++)
-            {
-                averageDistances[i] /= 2;
-            }
-            var koefX = averageDistances[0] / _distanceBetweenMarksX;
-            var koefY = averageDistances[1] / _distanceBetweenMarksY;
-            int sizeX = (int)(source.Width * koefX);
-            int sizeY = (int)(source.Height * koefY);
-            var center = GetCurrentCenter(markPoints);
-            int rectPointX = center.X - sizeX / 2;
-            int rectPointY = center.Y - sizeY / 2;
-            var section = new Rectangle(rectPointX, rectPointY, sizeX, sizeY);
-            return new Bitmap(CropImage(source, section), source.Size);
-        }
-
-        public static Bitmap CropImage(Bitmap source, Rectangle section)
-        {
-            var bitmap = new Bitmap(section.Width, section.Height);
-            using (var g = Graphics.FromImage(bitmap))
-            {
-                g.DrawImage(source, new Rectangle(Point.Empty, section.Size), section, GraphicsUnit.Pixel);
-                return bitmap;
-            }
+            return bitmap;
         }
 
         private static Point[] GetMarks(QRCodeFinder[] finders)
@@ -381,13 +300,122 @@ namespace HocaInk.InteractiveWall
             return rezPoints;
         }
 
+        private static float GetRotationAngle(Point[] markPoints)
+        {
+            var anglesSum = 0f;
+            for (int i = 0; i < markPoints.Length; i++)
+            {
+                int nextPointIndex = i < markPoints.Length - 1 ? i + 1 : 0;
+                anglesSum += GetAnglePointToPoint(markPoints[i], markPoints[nextPointIndex]);
+            }
+            var averageAngle = anglesSum / markPoints.Length;
+            return averageAngle;
+        }
+
+        private static Bitmap RotateImage(Bitmap bmp, float angle, Point center)
+        {
+            var rotatedImage = new Bitmap(bmp.Width, bmp.Height);
+            rotatedImage.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
+
+            using (var g = Graphics.FromImage(rotatedImage))
+            {
+                g.TranslateTransform(center.X, center.Y);
+                g.RotateTransform(angle);
+                g.TranslateTransform(-center.X, -center.Y);
+                g.DrawImage(bmp, new Point(0, 0));
+            }
+
+            return rotatedImage;
+        }
+
+        private static Bitmap ResizeImage(Bitmap source, Point[] markPoints)
+        {
+            _distanceBetweenMarksX = (int)Math.Round(1848f / 2048f * source.Width);
+            _distanceBetweenMarksY = (int)Math.Round(1248f / 1448f * source.Height);
+            var averageDistances = new float[2];
+            for (int i = 0; i < averageDistances.Length * 2; i++)
+            {
+                int iNext = i < 3 ? i + 1 : 0;
+                averageDistances[i % 2] += (float)Math.Sqrt(
+                    Math.Pow(markPoints[i].X - markPoints[iNext].X, 2) +
+                    Math.Pow(markPoints[i].Y - markPoints[iNext].Y, 2));
+            }
+            for (int i = 0; i < averageDistances.Length; i++)
+            {
+                averageDistances[i] /= 2;
+            }
+            float koefX = averageDistances[0] / _distanceBetweenMarksX;
+            float koefY = averageDistances[1] / _distanceBetweenMarksY;
+            int sizeX = (int)(source.Width * koefX);
+            int sizeY = (int)(source.Height * koefY);
+            Point center = GetCurrentCenter(markPoints);
+            int rectPointX = center.X - sizeX / 2;
+            int rectPointY = center.Y - sizeY / 2;
+            var section = new Rectangle(rectPointX, rectPointY, sizeX, sizeY);
+            return new Bitmap(CropImage(source, section), source.Size);
+        }
+
         public static byte[] ImageToByteArray(Image imageIn)
         {
             using (var ms = new MemoryStream())
             {
-                imageIn.Save(ms, ImageFormat.Bmp) ;
+                imageIn.Save(ms, ImageFormat.Bmp);
                 return ms.ToArray();
             }
+        }
+
+        private static void TransformFinders(RotateFlipType rotateType)
+        {
+            var borderPoint = new Point(_curretnImageWigth, _curretnImageHeight);
+            byte flipX = 0, flipY = 0;
+            if (rotateType == RotateFlipType.Rotate180FlipNone || rotateType == RotateFlipType.Rotate90FlipNone)
+            {
+                flipX = 1;
+            }
+            if (rotateType == RotateFlipType.Rotate180FlipNone || rotateType == RotateFlipType.Rotate270FlipNone)
+            {
+                flipY = 1;
+            }
+
+            foreach (var finder in _finders)
+            {
+                Point point = new Point();
+                if (rotateType == RotateFlipType.Rotate180FlipNone)
+                {
+                    point = finder.Position;
+                }
+                else
+                {
+                    point.X = finder.Position.Y;
+                    point.Y = finder.Position.X;
+                }
+                point.X = borderPoint.X * flipX + point.X * (1 - 2 * flipX);
+                point.Y = borderPoint.Y * flipY + point.Y * (1 - 2 * flipY);
+                finder.Position = point;
+            }
+        }
+
+        /// <summary>
+        /// Return angle between vector(basePoint, endPoint) and a nerless axes.
+        /// </summary>
+        /// <param name="basePoint"></param>
+        /// <param name="endPoint"></param>
+        /// <returns></returns>
+        private static float GetAnglePointToPoint(Point basePoint, Point endPoint)
+        {
+            float dx = basePoint.X - endPoint.X;
+            float dy = basePoint.Y - endPoint.Y;
+            var rezAngle = 0f;
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                rezAngle = (float)Math.Atan(dy / dx);
+            }
+            else
+            {
+                rezAngle = (float)Math.Atan(-dx / dy);
+            }
+
+            return rezAngle * 180 / (float)Math.PI;
         }
 
         private static Point GetCurrentCenter(Point[] markPositions)
@@ -404,5 +432,17 @@ namespace HocaInk.InteractiveWall
 
             return new Point(centerX, centerY);
         }
+
+        public static Bitmap CropImage(Bitmap source, Rectangle section)
+        {
+            var bitmap = new Bitmap(section.Width, section.Height);
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.DrawImage(source, new Rectangle(Point.Empty, section.Size), section, GraphicsUnit.Pixel);
+                return bitmap;
+            }
+        }
+
+       
     }
 }
