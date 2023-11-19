@@ -9,7 +9,8 @@ namespace HocaInk.InteractiveWall
     {
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private CloudController[] _cloudPrefabs;
-        [SerializeField] private float _spawnInterval;
+        [SerializeField] private float _maxSpawnInterval;
+        [SerializeField] private float _minSpawnInterval;
 
         private float _spawnTrigger;
 
@@ -17,7 +18,7 @@ namespace HocaInk.InteractiveWall
         {
             if (Time.time > _spawnTrigger)
             {
-                _spawnTrigger = Time.time + _spawnInterval * Random.Range(0.5f, 1.25f);
+                _spawnTrigger = Time.time + Random.Range(_minSpawnInterval, _maxSpawnInterval);
                 var cloudIndex = Random.Range(0, _cloudPrefabs.Length);
                 var pointIndex = Random.Range(0, _spawnPoints.Length);
                 Instantiate(
