@@ -5,7 +5,8 @@ using System.IO;
 using System;
 using QRCodeDecoderLibrary;
 using UnityEngine;
-using UniRx;
+using UnityEngine.Networking;
+//using UniRx;
 using Debug = UnityEngine.Debug;
 using Graphics = System.Drawing.Graphics;
 
@@ -14,6 +15,14 @@ namespace HocaInk.InteractiveWall
 {
     class ImageConverter
     {
+        private string test = "";
+        private Texture2D texture;
+        private byte[,] byteImage;
+        private Vector2 _center;
+        private float _angleRotated;
+        private float _tilling;
+        private float aligmentRotating;
+        
         private const int MAX_IMAGE_SIZE_X = 2048;
         private const int MAX_IMAGE_SIZE_Y = 1448;
 
@@ -24,6 +33,7 @@ namespace HocaInk.InteractiveWall
         private static int _curretnImageHeight;
         private static string _vehicleName;
         private static QRCodeFinder[] _finders;
+
 
         private MaterialGenerator _materialGenerator;
 
@@ -67,62 +77,82 @@ namespace HocaInk.InteractiveWall
         public void GenerateTexture(string imagePath)
         {
             Debug.Log("GetTexture " + imagePath);
-            if (File.Exists(imagePath))
+            if (true) // File.Exists(imagePath))
             {
-                var normalizeImage = Observable.Start(() =>
-                {
+                Debug.Log("IfEntered");
+                //var normalizeImage = Observable.Start(() =>
+                //{
+                    Debug.Log("ObservableStart");
+                    test = "ObservableStart";
                     try
                     {
-                        Bitmap image = LoadImage(imagePath);
-                        File.Delete(imagePath);
-                        image = RawTransform(image);
-                        image = TransformImage(image);
-                        /*var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
-                        int x, y;
-                        for (x = 0; x < newBitmap.Width; x++)
-                        {
-                            for (y = 0; y < newBitmap.Height; y++)
-                            {
-                                System.Drawing.Color pixelColor = image.GetPixel(x, y);
-                                System.Drawing.Color newColor = System.Drawing.Color.FromArgb(pixelColor.G, pixelColor.R, 0, pixelColor.B);
-                                //newBitmap.SetPixel(x, y, newColor);
-                                int offset = 15;
-                                if (x >= offset)
-                                    newBitmap.SetPixel(x - offset, y, newColor);
-                                else
-                                {
-                                    newBitmap.SetPixel(_curretnImageWigth - 1 - (offset - x), y, newColor);
-                                }
-                            }
-                        }
-                        //newBitmap.Save("c:/InteractiveSoftware/Converted/" + _vehicleName + ".jpg", ImageFormat.Jpeg);
-                        var imageByte = ImageToByteArray(newBitmap);;*/
-                        return PrepareToEncode(image);
-                    }
+                        //Bitmap image = LoadImageFromUrl(imagePath);
+                        //File.Delete(imagePath);
+                    //    image = RawTransform(image);
+                    //    image = TransformImage(image);
+                    ///*var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
+                    //int x, y;
+                    //for (x = 0; x < newBitmap.Width; x++)
+                    //{
+                    //    for (y = 0; y < newBitmap.Height; y++)
+                    //    {
+                    //        System.Drawing.Color pixelColor = image.GetPixel(x, y);
+                    //        System.Drawing.Color newColor = System.Drawing.Color.FromArgb(pixelColor.G, pixelColor.R, 0, pixelColor.B);
+                    //        //newBitmap.SetPixel(x, y, newColor);
+                    //        int offset = 15;
+                    //        if (x >= offset)
+                    //            newBitmap.SetPixel(x - offset, y, newColor);
+                    //        else
+                    //        {
+                    //            newBitmap.SetPixel(_curretnImageWigth - 1 - (offset - x), y, newColor);
+                    //        }
+                    //    }
+                    //}
+                    ////newBitmap.Save("c:/InteractiveSoftware/Converted/" + _vehicleName + ".jpg", ImageFormat.Jpeg);
+                    //var imageByte = ImageToByteArray(newBitmap);;*/
+                    ////        return PrepareToEncode(image);
+                    //byte[] byteImage = PrepareToEncode(image);
+                    //if (byteImage != null)
+                    //{
+                    //    Texture2D texture = GetTextureFromByte(byteImage);
+                    //    /*var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
+                    //    texture.LoadRawTextureData(normImage[0]);
+                    //    texture.Apply();
+                    //    texture.name = _vehicleName;*/
+                    //    _materialGenerator.CreateMaterial(texture);
+                    //}
+                    //else
+                    //{
+                    //    Debug.Log("Conversion error");
+                    //}
+                }
                     catch (Exception ex)
                     {
                         Debug.Log(ex.Message);
-                        return null;
+                //        return null;
                     }
-                });
-                Observable.WhenAll(normalizeImage)
-                    .ObserveOnMainThread()
-                    .Subscribe(normImage =>
-                    {
-                        if (normImage[0] != null)
-                        {
-                            Texture2D texture = GetTextureFromByte(normImage[0]);
-                            /*var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
-                            texture.LoadRawTextureData(normImage[0]);
-                            texture.Apply();
-                            texture.name = _vehicleName;*/
-                            _materialGenerator.CreateMaterial(texture);
-                        }
-                        else
-                        {
-                            Debug.Log("Conversion error");
-                        }
-                    });
+                //});
+                //Observable.WhenAll(normalizeImage)
+                //    .ObserveOnMainThread()
+                //    .Subscribe(normImage =>
+                //    {
+                        //if (normImage[0] != null)
+                        //if (byteImage != null)
+                        //{
+                        //    Texture2D texture = GetTextureFromByte(normImage[0]);
+                        //    /*var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
+                        //    texture.LoadRawTextureData(normImage[0]);
+                        //    texture.Apply();
+                        //    texture.name = _vehicleName;*/
+                        //    _materialGenerator.CreateMaterial(texture);
+                        //}
+                        //else
+                        //{
+                        //    Debug.Log("Conversion error");
+                        //}
+                //    });
+                
+                Debug.Log("ObservablePass:" + test);
             }
             else
             {
@@ -164,6 +194,68 @@ namespace HocaInk.InteractiveWall
             _curretnImageWigth = currentImage.Width;
             _curretnImageHeight = currentImage.Height;
             return currentImage;
+        }
+
+        public System.Collections.IEnumerator LoadImageFromUrl(string url)
+        {
+            var www = new UnityWebRequest(url);
+            www.downloadHandler = new DownloadHandlerTexture();
+            yield return www.SendWebRequest();
+
+            texture = ((DownloadHandlerTexture)(www.downloadHandler)).texture;
+
+            GetByteArrayFromTexture(texture);
+            
+            QRCodeResult[] qrResult = _qrDecoder.ImageDecoder(byteImage);
+            Debug.Log("Decode complete!");
+                Debug.Log($"Decode error type {qrResult[0].CornerPosition.X}");
+            Debug.Log("Vehicle name" + QRDecoder.ByteArrayToStr(qrResult[0].DataArray));
+            _finders = qrResult[0].FindersArray;
+
+            foreach (var finder in _finders)
+            {
+                Debug.Log($"Point ({finder.Position.X}, {finder.Position.Y})");
+            }
+            //return currentImage;
+        }
+
+        private void GetByteArrayFromTexture(Texture2D texture)
+        {
+            byteImage = new byte[texture.width * 3, texture.height];
+			var byteX = 0;
+			for (int y = 0; y < texture.height; y++)
+			{
+				for (int x = 0; x < texture.width; x++)
+				{
+					byteImage[byteX, y] = (byte)(texture.GetPixel(x, 1447 - y).r * 255);
+					byteImage[byteX + 1, y] = (byte)(texture.GetPixel(x, 1447 - y).g * 255);
+					byteImage[byteX + 2, y] = (byte)(texture.GetPixel(x, 1447 - y).b * 255);
+					if (x< 190 && x == y && x > 180)
+					{
+						Debug.Log($"BfromTex. x:{x}, y:{y}, byteX:{byteX}, Color:{texture.GetPixel(x, 1447 - y)}, br:{byteImage[byteX, y]}, bg:{byteImage[byteX + 1, y]}, bb:{byteImage[byteX + 2, y]}");
+					}
+					byteX += 3;
+				}
+				byteX = 0;
+			}
+        }
+
+        private static float GetAligmentRotation(Point topLeftMarkPosition)
+        {
+            if (topLeftMarkPosition.Y < _curretnImageHeight / 2)
+            {
+                if (topLeftMarkPosition.X < _curretnImageWigth / 2)
+                    return 0;
+                else
+                    return 270;
+            }
+            else
+            {
+                if (topLeftMarkPosition.X < _curretnImageWigth / 2)
+                    return 90;
+                else
+                    return 180;
+            }
         }
 
         private static Bitmap RawTransform(Bitmap bitmap)

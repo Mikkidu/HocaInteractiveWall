@@ -51,7 +51,8 @@ MonoBehaviour:
   _cannonPrefab: {fileID: 0}
   _helicoterPrefab: {fileID: 0}
   _boatPrefab: {fileID: 0}
-  _unitsTranform: {fileID: 0}
+  _spawnContainer: {fileID: 0}
+  _unitsParent: {fileID: 0}
   _spawnInterval: 1
 --- !u!114 &2303027967680835445
 MonoBehaviour:
@@ -66,5 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  _material: {fileID: 0}
   _spawnManager: {fileID: 2303027967680835402}
-  _isPlaneTest: 0
+  _textureTest: {fileID: 0}

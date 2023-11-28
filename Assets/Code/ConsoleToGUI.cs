@@ -4,18 +4,19 @@ using TMPro;
 namespace DebugStuff
 {
     public class ConsoleToGUI : MonoBehaviour
-    {/*
+    {
 #if !UNITY_EDITOR
         
         static string myLog = "";
         private string output;
         private string stack;
-        [SerializeField] private TextMeshProUGUI _console;
-        [SerializeField] private bool needConsole = false;
+        private TextMeshProUGUI _console;
+        private bool needConsole = true;
 
         private void Start()
         {
             if (!needConsole) return;
+            _console = GetComponent<TextMeshProUGUI>();
             _console.transform.parent.gameObject.SetActive(true);
         }
 
@@ -50,6 +51,6 @@ namespace DebugStuff
 
             }
         }
-#endif*/
+#endif
     }
 }

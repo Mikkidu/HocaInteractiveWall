@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.IO;
 using UnityEngine;
 
@@ -9,6 +10,13 @@ namespace HocaInk.InteractiveWall
 
     public class MaterialGenerator : MonoBehaviour
     {
+        /*[DllImport("__Internal")]
+        private static extern void ImageUploaderCaptureClick();*/
+
+        [DllImport("__Internal")]
+        private static extern void UploadFile(string gameObjectName, string methodName);
+
+
         [SerializeField] private Shader _shader;
         [SerializeField] private Material _material;
         [SerializeField] private UnitSpawner _spawnManager;
@@ -16,7 +24,7 @@ namespace HocaInk.InteractiveWall
         public Texture2D _textureTest;
 
         private FileSystemWatcher _watcher;
-        private List<string> _fileNames = new List<string>();
+        private List<string> _filePaths = new List<string>();
         private ImageConverter _converter;
         private string _path = "c:/InteractiveSoftware/Scans";
         private bool _isREadyForImport = true;
@@ -24,6 +32,7 @@ namespace HocaInk.InteractiveWall
 
         void Start()
         {
+            Debug.Log("Start Debug");
             _converter = new ImageConverter(this);
             _converter.StartConversion();
             if (!Directory.Exists(_path))
@@ -50,12 +59,14 @@ namespace HocaInk.InteractiveWall
         void Update()
         {
             
-            if(_fileNames.Count > 0 & _isREadyForImport)
+            if(_filePaths.Count > 0 & _isREadyForImport)
             {
-                string pictureName = _fileNames[0];
+                string picturePath = _filePaths[0];
                 _isREadyForImport = false;
-                _converter.GenerateTexture(_path + "/" + pictureName);
-                _fileNames.Remove(pictureName);
+                //_converter.GenerateTexture(picturePath);
+                //_converter.LoadImageFromUrl(picturePath);
+                StartCoroutine(_converter.LoadImageFromUrl(picturePath));
+                _filePaths.Remove(picturePath);
             }
         }
 
@@ -64,12 +75,31 @@ namespace HocaInk.InteractiveWall
         {
             try
             {
-                _fileNames.Add(ea.Name);
+                _filePaths.Add(ea.FullPath);
             }
             catch(System.Exception e)
             {
                 Debug.Log(e.Message);
             }
+        }
+
+        public void OnButtonPointerDown()
+        {
+#if UNITY_EDITOR
+            string path = UnityEditor.EditorUtility.OpenFilePanel("Open image", "", "jpg,png,bmp");
+            if (!System.String.IsNullOrEmpty(path))
+                _filePaths.Add("file:///" + path);
+            //FileSelected("file:///" + path);
+#else
+        UploadFile(gameObject.name, "FileSelected");
+        //ImageUploaderCaptureClick ();
+#endif
+        }
+
+        public void FileSelected(string url)
+        {
+            Debug.Log("File selected:" + url);
+            _filePaths.Add(url);
         }
 
         public void CreateMaterial(Texture2D texture)
