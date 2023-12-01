@@ -20,7 +20,8 @@ namespace HocaInk.InteractiveWall
         [SerializeField] private Shader _shader;
         [SerializeField] private Material _material;
         [SerializeField] private UnitSpawner _spawnManager;
-        
+        [SerializeField] private Material _webGLMaterial;
+
         public Texture2D _textureTest;
 
         private FileSystemWatcher _watcher;
@@ -108,6 +109,23 @@ namespace HocaInk.InteractiveWall
             if (texture == null) return;
             var newMaterial = new Material(_material);
             newMaterial.mainTexture = texture;
+            newMaterial.name = texture.name;
+            _spawnManager.AddMaterial(newMaterial, GetVehicleType(texture.name));
+            _isREadyForImport = true;
+            Debug.Log($"{texture.name}.material. Delta counts {System.Environment.TickCount - t1}");
+        }
+
+        public void CreateMaterial(Texture2D texture, Vector2 center, int alightAngle, float correctAngle, float tilling)
+        {
+            Debug.Log($"Spawn: {texture.name}, center {center}, alight {alightAngle}, angle {correctAngle}, talling {tilling}");
+            var t1 = System.Environment.TickCount;
+            if (texture == null) return;
+            var newMaterial = new Material(_webGLMaterial);
+            newMaterial.SetTexture("_Texture", texture);
+            newMaterial.SetVector("_OffsetCenter", center);
+            newMaterial.SetFloat("_RotateOrientation", alightAngle);
+            newMaterial.SetFloat("_ScaleFactor", tilling);
+            newMaterial.SetFloat("_OffsetAngle", correctAngle);
             newMaterial.name = texture.name;
             _spawnManager.AddMaterial(newMaterial, GetVehicleType(texture.name));
             _isREadyForImport = true;
