@@ -36,7 +36,6 @@ namespace HocaInk.InteractiveWall
         {
             Debug.Log("Start Debug");
             _converter = new ImageConverter(this);
-            _converter.StartConversion();
             if (!Directory.Exists(_path))
             {
                 try
@@ -60,15 +59,16 @@ namespace HocaInk.InteractiveWall
 
         void Update()
         {
-            
             if(_filePaths.Count > 0 & _isREadyForImport)
             {
                 string picturePath = _filePaths[0];
                 _isREadyForImport = false;
-                //_converter.GenerateTexture(picturePath);
-                //_converter.LoadImageFromUrl(picturePath);
-                //StartCoroutine(_converter.LoadImageFromUrl(picturePath));
+#if UNITY_WEBGL
                 _converter.LoadImageFromUrlTest(picturePath).Forget();
+
+#else
+                _converter.GenerateTexture(picturePath);
+#endif
                 _filePaths.Remove(picturePath);
             }
         }
@@ -132,6 +132,12 @@ namespace HocaInk.InteractiveWall
             _spawnManager.AddMaterial(newMaterial, GetVehicleType(texture.name));
             _isREadyForImport = true;
             Debug.Log($"{texture.name}.material. Delta counts {System.Environment.TickCount - t1}");
+        }
+
+        public void ConversionError()
+        {
+            Debug.Log("ConversionError");
+            _isREadyForImport = true;
         }
 
         private void OnError(object sender, ErrorEventArgs ea)
