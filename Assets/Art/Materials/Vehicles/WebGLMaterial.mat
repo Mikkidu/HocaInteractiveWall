@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TetTexture:
-        m_Texture: {fileID: 2800000, guid: 3e19831f939625840a59016c14c9ddb3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 38f6579256d0e294e8287ea5b3fcd2a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:

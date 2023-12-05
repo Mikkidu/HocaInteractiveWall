@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.IO;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 
 namespace HocaInk.InteractiveWall
@@ -66,7 +67,8 @@ namespace HocaInk.InteractiveWall
                 _isREadyForImport = false;
                 //_converter.GenerateTexture(picturePath);
                 //_converter.LoadImageFromUrl(picturePath);
-                StartCoroutine(_converter.LoadImageFromUrl(picturePath));
+                //StartCoroutine(_converter.LoadImageFromUrl(picturePath));
+                _converter.LoadImageFromUrlTest(picturePath).Forget();
                 _filePaths.Remove(picturePath);
             }
         }
