@@ -1,35 +1,32 @@
-using System.Drawing.Imaging;
 using System.Drawing;
-using System.Threading;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System;
 using QRCodeDecoderLibrary;
 using UnityEngine;
-using UnityEngine.Networking;
 #if UNITY_WEBGL
+using UnityEngine.Networking;
 using Cysharp.Threading.Tasks;
 #else
 using UniRx;
-#endif
-using Debug = UnityEngine.Debug;
+using System.Drawing.Imaging;
+using System.Threading;
 using Graphics = System.Drawing.Graphics;
+#endif
+//using Debug = UnityEngine.Debug;
 
 
 namespace HocaInk.InteractiveWall
 {
+
+
     class ImageConverter
     {
 
-#region TestFields
-
-        private string test = "";
-
-#endregion
 
 #region OutputFields
 
-        private Texture2D texture;
+        private Texture2D _texture;
         private Vector2 _center;
         private int _aligmentRotating;
         private float _angleRotated;
@@ -45,16 +42,18 @@ namespace HocaInk.InteractiveWall
 
         private MaterialGenerator _materialGenerator;
 
-        private static QRDecoder _qrDecoder;
-        private static QRCodeFinder[] _finders;
-        private byte[,] _byteImage;
-        private static int _currentImageWidth;
-        private static int _currentImageHeight;
-        private int _textureSize;
-        private static int _distanceBetweenMarksX;
-        private static int _distanceBetweenMarksY;
-        private static string _vehicleName;
+        private QRDecoder _qrDecoder;
+        private QRCodeFinder[] _finders;
+        private int _currentImageWidth;
+        private int _currentImageHeight;
+        private int _distanceBetweenMarksX;
+        private int _distanceBetweenMarksY;
+        private string _vehicleName;
+#if UNITY_WEBGL
         private float _frameStartTime;
+        private byte[,] _byteImage;
+        private int _textureSize;
+#endif
 
 #endregion
 
@@ -64,10 +63,10 @@ namespace HocaInk.InteractiveWall
         public ImageConverter(MaterialGenerator materialGenerator)
         {
             _materialGenerator = materialGenerator;
-            StartConversion();
+            ConverterInitialization();
         }
 
-        public void StartConversion()
+        public void ConverterInitialization()
         {
             try
             {
@@ -98,14 +97,16 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        #endregion
+#endregion
 
-        #region PC
+
+#region PC
 
 #if !UNITY_WEBGL
-        public void GenerateTexture(string imagePath)
+
+
+        public void GenerateTexturePC(string imagePath)
         {
-            Debug.Log("GetTexture " + imagePath);
             if (File.Exists(imagePath))
             {
                 var normalizeImage = Observable.Start(() =>
@@ -114,7 +115,7 @@ namespace HocaInk.InteractiveWall
                     {
                         Bitmap image = LoadImage(imagePath);
                         File.Delete(imagePath);
-                        image = RawTransform(image);
+                        RawTransform(image);
                         image = TransformImage(image);
                         return PrepareToEncode(image);
                     }
@@ -142,11 +143,17 @@ namespace HocaInk.InteractiveWall
             else
             {
                 Debug.Log("No file");
+                _materialGenerator.ConversionError();
             }
             return;
         }
 
-        private static Bitmap LoadImage(string path)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private Bitmap LoadImage(string path)
         {
             Bitmap currentImage = null;
             int counter = 0;
@@ -178,19 +185,23 @@ namespace HocaInk.InteractiveWall
             return currentImage;
         }
 
-
-        private static Bitmap RawTransform(Bitmap bitmap)
+        /// <summary>
+        /// Image recognition, get corner marks.
+        /// </summary>
+        /// <param name="bitmap">Image fore recognition</param>
+        /// <returns></returns>
+        private void RawTransform(Bitmap bitmap)
         {
-            if (bitmap == null) return null;
+            if (bitmap == null) return;
 
             QRCodeResult[] qrResult = _qrDecoder.ImageDecoder(bitmap);
             _vehicleName = QRDecoder.ByteArrayToStr(qrResult[0].DataArray);
             _finders = qrResult[0].FindersArray;
             ChangeAlingment(ref bitmap, GetRotateType(qrResult[0].CornerPosition));
-            return bitmap;
+            //return bitmap;
         }
 
-        private static Bitmap TransformImage(Bitmap image)
+        private Bitmap TransformImage(Bitmap image)
         {
             if (_finders == null || _finders.Length < 7)
                 return null;
@@ -199,11 +210,10 @@ namespace HocaInk.InteractiveWall
             var currentCenter = GetCurrentCenter(markPositions);
             image = RotateImage(image, rotateAngle, currentCenter);
             image = ResizeImage(image, markPositions);
-            Graphics.FromImage(image).FillRectangle(Brushes.Brown, new Rectangle(0, 0, _currentImageWidth / 5, _currentImageWidth / 5));
             return image;
         }
 
-        private static byte[] PrepareToEncode(Bitmap image)
+        private byte[] PrepareToEncode(Bitmap image)
         {
             var newBitmap = new Bitmap(image.Width, image.Height, PixelFormat.Format32bppArgb);
             int x, y;
@@ -225,16 +235,16 @@ namespace HocaInk.InteractiveWall
             return ImageToByteArray(newBitmap);
         }
 
-        private static Texture2D GetTextureFromByte(byte[] byteImage)
+        private Texture2D GetTextureFromByte(byte[] byteImage)
         {
-            var texture = new Texture2D(MAX_IMAGE_SIZE_X, MAX_IMAGE_SIZE_Y, TextureFormat.RGBA32, false);
+            var texture = new Texture2D(_currentImageWidth, _currentImageWidth, TextureFormat.RGBA32, false);
             texture.LoadRawTextureData(byteImage);
             texture.Apply();
             texture.name = _vehicleName;
             return texture;
         }
 
-        private static RotateFlipType GetRotateType(Point topLeftMarkPosition)
+        private RotateFlipType GetRotateType(Point topLeftMarkPosition)
         {
             if (topLeftMarkPosition.Y < _currentImageHeight / 2)
                 if (topLeftMarkPosition.X < _currentImageWidth / 2)
@@ -248,7 +258,7 @@ namespace HocaInk.InteractiveWall
                 return RotateFlipType.Rotate180FlipNone;
         }
 
-        private static Bitmap ChangeAlingment(ref Bitmap bitmap, RotateFlipType rotateType)
+        private Bitmap ChangeAlingment(ref Bitmap bitmap, RotateFlipType rotateType)
         {
             if (rotateType != RotateFlipType.RotateNoneFlipNone)
             {
@@ -263,7 +273,7 @@ namespace HocaInk.InteractiveWall
             return bitmap;
         }
 
-        private static Bitmap RotateImage(Bitmap bmp, float angle, Point center)
+        private Bitmap RotateImage(Bitmap bmp, float angle, Point center)
         {
             var rotatedImage = new Bitmap(bmp.Width, bmp.Height);
             rotatedImage.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
@@ -279,7 +289,7 @@ namespace HocaInk.InteractiveWall
             return rotatedImage;
         }
 
-        private static Bitmap ResizeImage(Bitmap source, Point[] markPoints)
+        private Bitmap ResizeImage(Bitmap source, Point[] markPoints)
         {
             _distanceBetweenMarksX = (int)Math.Round(1848f / 2048f * source.Width);
             _distanceBetweenMarksY = (int)Math.Round(1248f / 1448f * source.Height);
@@ -303,10 +313,10 @@ namespace HocaInk.InteractiveWall
             int rectPointX = center.X - sizeX / 2;
             int rectPointY = center.Y - sizeY / 2;
             var section = new Rectangle(rectPointX, rectPointY, sizeX, sizeY);
-            return new Bitmap(CropImage(source, section), source.Size);
+            return CropImage(source, section);
         }
 
-        public static byte[] ImageToByteArray(Image imageIn)
+        public byte[] ImageToByteArray(Image imageIn)
         {
             using (var ms = new MemoryStream())
             {
@@ -315,10 +325,10 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        private static void TransformFinders(RotateFlipType rotateType)
+        private void TransformFinders(RotateFlipType rotateType)
         {
             var borderPoint = new Point(_currentImageWidth, _currentImageHeight);
-            byte flipX = 0, flipY = 0;
+            int flipX = 0, flipY = 0;
             if (rotateType == RotateFlipType.Rotate180FlipNone || rotateType == RotateFlipType.Rotate90FlipNone)
             {
                 flipX = 1;
@@ -346,7 +356,7 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        private static Point GetCurrentCenter(Point[] markPositions)
+        private Point GetCurrentCenter(Point[] markPositions)
         {
             int centerX = 0;
             int centerY = 0;
@@ -361,47 +371,43 @@ namespace HocaInk.InteractiveWall
             return new Point(centerX, centerY);
         }
 
-        public static Bitmap CropImage(Bitmap source, Rectangle section)
+        public Bitmap CropImage(Bitmap source, Rectangle section)
         {
-            var bitmap = new Bitmap(section.Width, section.Height);
+            var bitmap = new Bitmap(source.Width, source.Width);
+            int fieldHeight = (source.Width - source.Height) / 2;
+            var fieldSize = new Size(_currentImageWidth, fieldHeight);
+            var brush = new SolidBrush(System.Drawing.Color.Brown);
             using (var g = Graphics.FromImage(bitmap))
             {
-                g.DrawImage(source, new Rectangle(Point.Empty, section.Size), section, GraphicsUnit.Pixel);
+                g.FillRectangle(brush, new Rectangle(Point.Empty, fieldSize));
+                g.DrawImage(source, new Rectangle(new Point(0, fieldHeight), source.Size), section, GraphicsUnit.Pixel);
                 return bitmap;
             }
         }
+
+
 #endif
 
-#endregion
+        #endregion
 
 
-#region WebGL
+        #region WebGL
 
 #if UNITY_WEBGL
-        public async UniTask LoadImageFromUrlTest(string url)
+
+        public async UniTask GenerateTextureWebGL(string url)
         {
             _frameStartTime = Time.realtimeSinceStartup;
-            using (var www = new UnityWebRequest(url))
-            {
-                www.downloadHandler = new DownloadHandlerTexture();
-                await www.SendWebRequest();
-
-                texture = ((DownloadHandlerTexture)(www.downloadHandler)).texture;
-            }
-            await CheckFrameTime();
-            _currentImageHeight = texture.height;
-            _currentImageWidth = texture.width;
-            await GetByteArrayFromTexture(texture);
-
-            QRCodeResult[] qrResult = _qrDecoder.ImageDecoder(_byteImage);
-            _finders = qrResult[0].FindersArray;
-            _aligmentRotating = GetAligmentRotation(qrResult[0].CornerPosition);
+            await LoadTexture(url);
+            _byteImage = await GetByteArrayFromTexture(_texture);
+            _aligmentRotating = GetAligmentRotation(_byteImage);
             await CheckFrameTime();
             GetTransformData();
             await CheckFrameTime();
-            await CropTexture();
-            texture.name = QRDecoder.ByteArrayToStr(qrResult[0].DataArray);
-            _materialGenerator.CreateMaterial(texture, _center, -_aligmentRotating, _angleRotated, _tilling);
+            _texture = await CropTexture();
+            _texture.name = _vehicleName;
+            _materialGenerator.CreateMaterial(_texture, _center, -_aligmentRotating, _angleRotated, _tilling);
+            _texture = null;
         }
 
         private async UniTask CheckFrameTime()
@@ -413,25 +419,73 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        private async UniTask GetByteArrayFromTexture(Texture2D texture)
+        private async UniTask LoadTexture(string url)
         {
-            _byteImage = new byte[texture.width * 3, texture.height];
+            using (var request = new UnityWebRequest(url))
+            {
+                request.downloadHandler = new DownloadHandlerTexture();
+                await request.SendWebRequest();
+
+                _texture = ((DownloadHandlerTexture)(request.downloadHandler)).texture;
+            }
+            _currentImageHeight = _texture.height;
+            _currentImageWidth = _texture.width;
+            await CheckFrameTime();
+        }
+
+        private async UniTask<byte[,]> GetByteArrayFromTexture(Texture2D texture)
+        {
+            var byteImage = new byte[texture.width * 3, texture.height];
             var byteX = 0;
             for (int y = 0; y < texture.height; y++)
             {
                 for (int x = 0; x < texture.width; x++)
                 {
-                    _byteImage[byteX, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).r * 255);
-                    _byteImage[byteX + 1, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).g * 255);
-                    _byteImage[byteX + 2, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).b * 255);
+                    byteImage[byteX, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).r * 255);
+                    byteImage[byteX + 1, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).g * 255);
+                    byteImage[byteX + 2, y] = (byte)(texture.GetPixel(x, _currentImageHeight - 1 - y).b * 255);
                     byteX += 3;
                 }
                 byteX = 0;
                 await CheckFrameTime();
             }
+            return byteImage;
         }
 
-        private async UniTask CropTexture()
+        private int GetAligmentRotation(byte[,] byteImage)
+        {
+            QRCodeResult[] qrResult = _qrDecoder.ImageDecoder(byteImage);
+            _finders = qrResult[0].FindersArray;
+            _vehicleName = QRDecoder.ByteArrayToStr(qrResult[0].DataArray);
+            Point topLeftMarkPosition = qrResult[0].CornerPosition;
+            if (topLeftMarkPosition.Y > _currentImageHeight / 2 != topLeftMarkPosition.X > _currentImageWidth / 2)
+            {
+                if (topLeftMarkPosition.Y < _currentImageWidth / 2)
+                    return 270;
+                else
+                    return 90;
+            }
+            else
+            {
+                if (topLeftMarkPosition.Y < _currentImageHeight / 2)
+                    return 0;
+                else
+                    return 180;
+            }
+        }
+
+        private void GetTransformData()
+        {
+            if (_finders == null || _finders.Length < 7)
+                return;
+            var markPositions = GetMarks(_finders);
+            ConvertMarksToSquare(markPositions, _aligmentRotating);
+            _angleRotated = GetRotationAngle(markPositions);
+            _center = GetCurrentCenterVector(markPositions);
+            _tilling = GetTillinFactor(markPositions);
+        }
+
+        private async UniTask<Texture2D> CropTexture()
         {
 
             int fieldWidth, fieldsHeight, x1, x2, y1, y2;
@@ -457,34 +511,16 @@ namespace HocaInk.InteractiveWall
             await CheckFrameTime();
             UnityEngine.Color[] colorArrayField = Enumerable.Repeat(color, fieldWidth * fieldsHeight).ToArray();
             await CheckFrameTime();
-            UnityEngine.Color[] pixelsFromTexture = texture.GetPixels();
+            UnityEngine.Color[] pixelsFromTexture = _texture.GetPixels();
             await CheckFrameTime();
             squareTexture.SetPixels(0, 0, fieldWidth, fieldsHeight, colorArrayField);
             await CheckFrameTime();
-            squareTexture.SetPixels(x1, y1, texture.width, texture.height, pixelsFromTexture);
+            squareTexture.SetPixels(x1, y1, _texture.width, _texture.height, pixelsFromTexture);
             await CheckFrameTime();
             squareTexture.SetPixels(x2, y2, fieldWidth, fieldsHeight, colorArrayField);
             await CheckFrameTime();
             squareTexture.Apply();
-            texture = squareTexture;
-        }
-
-        private static int GetAligmentRotation(Point topLeftMarkPosition)
-        {
-            if (topLeftMarkPosition.Y > _currentImageHeight / 2 != topLeftMarkPosition.X > _currentImageWidth / 2)
-            {
-                if (topLeftMarkPosition.Y < _currentImageWidth / 2)
-                    return 270;
-                else
-                    return 90;
-            }
-            else
-            {
-                if (topLeftMarkPosition.Y < _currentImageHeight / 2)
-                    return 0;
-                else
-                    return 180;
-            }
+            return squareTexture;
         }
 
         private void ConvertMarksToSquare(Point[] marks, int aligmentAngle)
@@ -508,17 +544,6 @@ namespace HocaInk.InteractiveWall
             }
         }
 
-        private void GetTransformData()
-        {
-            if (_finders == null || _finders.Length < 7)
-                return;
-            var markPositions = GetMarks(_finders);
-            ConvertMarksToSquare(markPositions, _aligmentRotating);
-            _angleRotated = GetRotationAngle(markPositions);
-            _center = GetCurrentCenterVector(markPositions);
-            GetTillinFactor(markPositions);
-        }
-
         private Vector2 GetCurrentCenterVector(Point[] markPositions)
         {
             float centerX = 0;
@@ -534,7 +559,7 @@ namespace HocaInk.InteractiveWall
             return new Vector2(centerX, centerY);
         }
 
-        private void GetTillinFactor(Point[] markPoints)
+        private float GetTillinFactor(Point[] markPoints)
         {
             if (_aligmentRotating == 0 || _aligmentRotating == 180)
             {
@@ -561,21 +586,30 @@ namespace HocaInk.InteractiveWall
             }
             float koefX = averageDistances[0] / _distanceBetweenMarksX;
             float koefY = averageDistances[1] / _distanceBetweenMarksY;
-            _tilling = (koefX + koefY) / 2;
+            return (koefX + koefY) / 2;
         }
+
 #endif
 
         #endregion
 
         #region UniversalCode
 
-        private static Point[] GetMarks(QRCodeFinder[] finders)
+        public void GenerateTexture(string url)
+        {
+#if UNITY_WEBGL
+            GenerateTextureWebGL(url).Forget();
+#else
+            GenerateTexturePC(url);
+#endif
+        }
+
+        private Point[] GetMarks(QRCodeFinder[] finders)
         {
             var rezPoints = new Point[4];
-            var point = new Point();
             foreach (var finder in finders)
             {
-                point = finder.Position;
+                Point point = finder.Position;
                 if (point.Y < _currentImageHeight / 2)
                 {
                     if (point.X < _currentImageWidth / 2)
@@ -615,7 +649,7 @@ namespace HocaInk.InteractiveWall
             return rezPoints;
         }
 
-        private static float GetRotationAngle(Point[] markPoints)
+        private float GetRotationAngle(Point[] markPoints)
         {
             var anglesSum = 0f;
             for (int i = 0; i < markPoints.Length; i++)
@@ -633,7 +667,7 @@ namespace HocaInk.InteractiveWall
         /// <param name="basePoint"></param>
         /// <param name="endPoint"></param>
         /// <returns></returns>
-        private static float GetAnglePointToPoint(Point basePoint, Point endPoint)
+        private float GetAnglePointToPoint(Point basePoint, Point endPoint)
         {
             float dx = basePoint.X - endPoint.X;
             float dy = basePoint.Y - endPoint.Y;
@@ -651,9 +685,6 @@ namespace HocaInk.InteractiveWall
         }
 
 #endregion
-
-
-
 
     }
 }

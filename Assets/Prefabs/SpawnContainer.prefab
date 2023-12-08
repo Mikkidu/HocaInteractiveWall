@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5121497144857349937}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08912012, y: -0.7806813, z: -0.24854422, w: 0.5664098}
-  m_LocalPosition: {x: -4.4631267, y: 28.37873, z: -25.530323}
+  m_LocalRotation: {x: 0.0076209437, y: 0.94757766, z: 0.022664044, w: -0.31862965}
+  m_LocalPosition: {x: -51.6227, y: 7.021241, z: 8.192885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89,16 +89,16 @@ MonoBehaviour:
     useClippedPercent: 0
     keys: []
   _clipFromSample:
-    position: {x: -7.734127, y: 15.106075, z: 19.209963}
-    up: {x: -0.7431209, y: 0.55071795, z: -0.38010672}
-    forward: {x: 0.6748229, y: 0.3584855, z: -0.6450598}
+    position: {x: 21.84395, y: 11.942276, z: -37.112152}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
   _clipToSample:
-    position: {x: -7.734127, y: 15.106075, z: 19.209963}
-    up: {x: -0.7431208, y: 0.5507179, z: -0.3801067}
-    forward: {x: 0.6748229, y: 0.3584855, z: -0.6450598}
+    position: {x: 21.84395, y: 11.942276, z: -37.112152}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: 0.99969226, y: -0.013570727, z: 0.020766877}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 1
@@ -143,16 +143,16 @@ MonoBehaviour:
   targetRigidbody2D: {fileID: 0}
   targetTransform: {fileID: 2446847395076754030}
   _result:
-    position: {x: -4.4631267, y: 28.37873, z: -25.530323}
-    up: {x: 0.002695821, y: 0.8936983, z: 0.44866022}
-    forward: {x: -0.9286718, y: 0.28711063, z: -0.23481143}
+    position: {x: -51.6227, y: 7.021241, z: 8.192885}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: -0.6035072, y: 0.0478084, z: -0.79592305}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.6078662928925832
   _finalResult:
-    position: {x: -4.4631267, y: 28.37873, z: -25.530323}
-    up: {x: 0.002695821, y: 0.8936983, z: 0.44866022}
-    forward: {x: -0.9286718, y: 0.28711063, z: -0.23481143}
+    position: {x: -51.6227, y: 7.021241, z: 8.192885}
+    up: {x: 0, y: 1, z: 0}
+    forward: {x: -0.6035072, y: 0.0478084, z: -0.79592305}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.6078662928925832
@@ -186,12 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f7b91e77083f54a857c911e41edc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 1948318065549245159, guid: 007ff92a18ba92e488f6110ab3533eab, type: 3}
-  _startPoint: 0.5599454
+  _unit: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
+  _startPoint: 0.356749
   _startDistance: 143.42644
   _parent: {fileID: 0}
   _splineFollower: {fileID: 2821726582858275280}
-  _trackType: 0
+  _trackType: 1
 --- !u!114 &3939557700629812484
 MonoBehaviour:
   m_ObjectHideFlags: 0
