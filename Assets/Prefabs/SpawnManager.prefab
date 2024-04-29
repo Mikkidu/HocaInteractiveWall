@@ -45,15 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3441a6a5821b0d947a0d7058ad764049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _subMarinePrefab: {fileID: 0}
-  _planerPrefab: {fileID: 0}
-  _tankPrefab: {fileID: 0}
-  _cannonPrefab: {fileID: 0}
-  _helicoterPrefab: {fileID: 0}
-  _boatPrefab: {fileID: 0}
-  _spawnContainer: {fileID: 0}
+  _subMarinePrefab: {fileID: -6385434296171328726, guid: ca0c8107e6ef0bc4f851899701309ba5, type: 3}
+  _planerPrefab: {fileID: 6333660650070612168, guid: dcbef7937e1dff2468f1216f43fa91c4, type: 3}
+  _tankPrefab: {fileID: -70609591312500662, guid: a35b4bfa1665dcc4980880a072e1b519, type: 3}
+  _cannonPrefab: {fileID: 6244974574775038424, guid: e8392ee27ea059e4eae60102d6fb1d7e, type: 3}
+  _helicoterPrefab: {fileID: 1948318065549245159, guid: 007ff92a18ba92e488f6110ab3533eab, type: 3}
+  _boatPrefab: {fileID: 8605257931338164274, guid: 3cd8fa900efcbcc41a97539a267dc61d, type: 3}
+  _spawnContainer: {fileID: 1771322407459875289, guid: 60901ddc1e8799549862078e4f5674f9, type: 3}
   _unitsParent: {fileID: 0}
-  _spawnInterval: 1
+  _spawnInterval: 2
 --- !u!114 &2303027967680835445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e70fe0eae4ed764d8c288eef1bf6def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  _material: {fileID: 0}
+  _shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  _material: {fileID: 2100000, guid: 20f6bedfb5817a94facc2106c8d99968, type: 2}
   _spawnManager: {fileID: 2303027967680835402}
+  _webGLMaterial: {fileID: 2100000, guid: e36ca3f3ab2fd6349ad2455cff843669, type: 2}
   _textureTest: {fileID: 0}

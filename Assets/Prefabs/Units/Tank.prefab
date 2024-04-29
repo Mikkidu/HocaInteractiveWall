@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1262470759515691846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2738823578986853902}
+  m_Layer: 0
+  m_Name: RaycastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2738823578986853902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262470759515691846}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.93, z: 2.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3360495571052390072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3360495571052390078
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,7 +48,8 @@ GameObject:
   - component: {fileID: 1900174349}
   - component: {fileID: 1900174353}
   - component: {fileID: 4107953400326031590}
-  m_Layer: 0
+  - component: {fileID: 3968568341536717127}
+  m_Layer: 3
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,6 +70,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3363484778739577210}
+  - {fileID: 2738823578986853902}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 3.194, y: 88.811, z: 0}
 --- !u!114 &-70609591312500662
@@ -126,7 +159,7 @@ MonoBehaviour:
   buildOnAwake: 1
   buildOnEnable: 0
   applyDirectionRotation: 1
-  useTriggers: 1
+  useTriggers: 0
   triggerGroup: 0
   _direction: 1
   _dontLerpDirection: 0
@@ -219,19 +252,7 @@ MonoBehaviour:
       m_Calls: []
   _unityOnBeginningReached:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3360495571052390073}
-        m_TargetAssemblyTypeName: Dreamteck.Splines.SplineFollower, Dreamteck.Splines
-        m_MethodName: set_followSpeed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &3335973052580086786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252,7 +273,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4.553948, y: 1.9395291, z: 4.864008}
-  m_Center: {x: -1.06443694e-10, y: 0.8134168, z: 0.0010020706}
+  m_Center: {x: -1.06443694e-10, y: 0.68, z: 0.0010020706}
 --- !u!54 &1868993791539211002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,7 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31db80a82029c254d8c9679c51cbaab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedModifier: 0.2
+  _wheelRadius: 0.6
+  _rotationCorrection: 0
   _wheels:
   - {fileID: 3363129656663679616}
   - {fileID: 3365135467203915982}
@@ -351,6 +373,25 @@ MonoBehaviour:
   _actionCount: 2
   _hasSounds: 0
   _soundName: 
+--- !u!114 &3968568341536717127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360495571052390078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65362b54a32619f499e8995b971aa438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stopDistance: 4
+  _raycastPoint: {fileID: 2738823578986853902}
+  _targetLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  _animController: {fileID: 4107953400326031590}
+  _stoppingInterval: 3.5
 --- !u!1001 &1131460439
 PrefabInstance:
   m_ObjectHideFlags: 0

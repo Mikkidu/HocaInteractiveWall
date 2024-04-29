@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4199670686928143642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5990095217621841026}
+  m_Layer: 0
+  m_Name: RayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5990095217621841026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199670686928143642}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8621719810841630587}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8624738229627533691
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +45,8 @@ GameObject:
   - component: {fileID: 7137140222437139639}
   - component: {fileID: 2735551681441454458}
   - component: {fileID: -2763085231036729526}
-  m_Layer: 0
+  - component: {fileID: 5114513556851829906}
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,6 +67,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7902527351416975592}
+  - {fileID: 5990095217621841026}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6333660650070612168
@@ -211,7 +244,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8573456, y: 0.3, z: 2.438663}
+  m_Size: {x: 3.8573456, y: 2, z: 2.438663}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2763085231036729526
 MonoBehaviour:
@@ -228,6 +261,25 @@ MonoBehaviour:
   _actionCount: 2
   _hasSounds: 0
   _soundName: 
+--- !u!114 &5114513556851829906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624738229627533691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65362b54a32619f499e8995b971aa438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stopDistance: 6
+  _raycastPoint: {fileID: 5990095217621841026}
+  _targetLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  _animController: {fileID: -2763085231036729526}
+  _stoppingInterval: 3.5
 --- !u!1001 &7647626450009921283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,15 +350,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6224370469608031518, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0026
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: -6224370469608031518, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0118
+      value: 1.225
       objectReference: {fileID: 0}
     - target: {fileID: -6224370469608031518, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0003
+      value: -0.013
       objectReference: {fileID: 0}
     - target: {fileID: -6224370469608031518, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -474,15 +526,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5782197922836866647, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0026
+      value: 0.2275
       objectReference: {fileID: 0}
     - target: {fileID: 5782197922836866647, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0118
+      value: 1.1783
       objectReference: {fileID: 0}
     - target: {fileID: 5782197922836866647, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000345
+      value: -0.0138
       objectReference: {fileID: 0}
     - target: {fileID: 5782197922836866647, guid: 89b3222649c63e949af28ef46bb4e59a, type: 3}
       propertyPath: m_LocalRotation.w

@@ -56,6 +56,16 @@ namespace HocaInk.InteractiveWall
             }
         }
 
+        public void BlockUnit()
+        {
+            _animator.SetBool("IsBlocked", true);
+        }
+
+        public void UnlockUnit()
+        {
+            _animator.SetBool("IsBlocked", false);
+        }
+
         private void SetNewAction(byte actionIndex)
         {
             _isSecondSameAction = false;
